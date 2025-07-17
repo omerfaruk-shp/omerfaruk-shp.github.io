@@ -1,348 +1,315 @@
 <style>
-  
-
-@import url(https://fonts.googleapis.com/css?family=Heebo:300,400,700);
-html {
-  height: 100%;
-}
-body {
-  background: 
-   -webkit-linear-gradient(#ABC4E6 ,  rgba(135, 60, 255, 0.0) 80%),
-   -webkit-linear-gradient(-45deg, #969BD9  15%, #C3A8E9 75%);
-}
-
-@keyframes harlem {
-  0% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    -ms-transform: scale(1);
-  }
-  20% {
-    transform: scale(1.03, 1);
-    -webkit-transform: scale(1.03, 1);
-    -moz-transform: scale(1.03, 1);
-    -o-transform: scale(1.03, 1);
-    -ms-transform: scale(1.03, 1);
-  }
-  40% {
-    transform: scale(0.97, 1);
-    -webkit-transform: scale(0.97, 1);
-    -moz-transform: scale(0.97, 1);
-    -o-transform: scale(0.97, 1);
-    -ms-transform: scale(0.97, 1);
-  }
-  60% {
-    transform: scale(1.01, 1);
-    -webkit-transform: scale(1.01, 1);
-    -moz-transform: scale(1.01, 1);
-    -o-transform: scale(1.01, 1);
-    -ms-transform: scale(1.01, 1);
-  }
-  80% {
-    transform: scale(0.99, 1);
-    -webkit-transform: scale(0.99, 1);
-    -moz-transform: scale(0.99, 1);
-    -o-transform: scale(0.99, 1);
-    -ms-transform: scale(0.99, 1);
-  }
-  100% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    -ms-transform: scale(1);
-  }
-}
-
-h1 {
- 
-}
-
-h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 10px;
-  line-height: 10px;
-  letter-spacing: 2.5px;
-  font-family: 'Open Sans';
-  font-weight: 700;
-  color: #fff;
-}
-
-h3 {
-  margin: 0;
-  padding: 0;
-  font-size: 11px;
-  line-height: 11px;
-  font-family: 'Open Sans';
-  font-weight: 400;
-  color: #777;
-}
-
-h4 {
-  margin: 0 0 5px 29px;
-  padding: 0;
-  font-size: 14px;
-  line-height: 14px;
-  font-family: 'Open Sans';
-  font-weight: 700;
-  color: #fff;
-}
-
-h5 {
-  margin: 0;
-  padding: 0;
-  font-size: 13px;
-  line-height: 13px;
-  font-family: 'Open Sans';
-  font-weight: 700;
-  color: #6d6d6d;
-}
-
-h6 {
-  margin: 0;
-  padding: 0;
-  font-size: 13px;
-  line-height: 13px;
-  font-family: 'Open Sans';
-  font-weight: 700;
-  color: #f0f0f0;
-}
-
-.frame1 {
-  height: 45px;
-    background: white;
-  width:200px;
-  margin-top:45px;
-  margin-left:505px;
-}
-
-.frame2 {
-  height: 45px;
-    background: white;
-  width:400px;
-  margin-top:45px;
-  margin-left:1000px;
-}
-
-
-.screen {
-  background-color: #6862A2;
-  padding: 0;
-  height: 650px;
-  width: 500px;
-  position: absolute;
-    position: absolute;
-  left: 50%;
-	top: 0;
-	transform: translate(-50%, 0);
-  box-shadow: -20px 24px 125px rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-  margin: 30px 0;
-    background-image:
-    radial-gradient(
-      circle closest-side,
-      #341b85,
-      #160b39   
-    );
-}
-
-
-.title {
-  font-family:'Heebo';
-  font-size:80px;
-  margin-left:90px;
-  margin-top:140px;
-  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #3366ff ), color-stop(0.15, #4775ff   ), color-stop(0.3, #888cff ), color-stop(0.45, #14e5f3  ), color-stop(0.6, #a77fdf ),color-stop(0.75, #a77fdf ), color-stop(0.9, #ff2), color-stop(1, #1e90ff) );
-  background-image: gradient( linear, left top, right top, color-stop(0, #1e90ff), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #C3A8E9 ),color-stop(0.75, #C3A8E9 ), color-stop(0.9, #ff2), color-stop(1, #1e90ff) );
-  color:transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-
-
-#loader {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 27%;
-  width: 390px;
-}
-#loader ul {
-  margin: 0;
-  list-style: none;
-  width: 390px;
-  position: relative;
-  padding: 0;
-  height: 210px;
-}
-#loader ul li {
-  position: absolute;
-  width: 0px;
-  height: 18px;
-  margin-top:20px;
-  background-color: #fff;
-  bottom: 0;
-}
-@keyframes sequence1 {
-  0% {
-    width: 40px;
-  }
-  50% {
-    width: 280px;
-  }
-  100% {
-    width: 40px;
-  }
-}
-@keyframes sequence2 {
-  0% {
-    width: 50px;
-  }
-  50% {
-    width: 395px;
-  }
-  100% {
-    width: 50px;
-  }
-}
-#loader li:nth-child(1) {
-  top: 0;
-  animation: sequence1 2s ease infinite 0;
-}
-#loader li:nth-child(2) {
-  top: 15px;
-  animation: sequence2 2s ease infinite 0.1s;
-}
-#loader li:nth-child(3) {
-  top: 50px;
-  animation: sequence1 2s ease-in-out infinite 0.2s;
-}
-#loader li:nth-child(4) {
-  top: 85px;
-  animation: sequence2 2s ease-in infinite 0.3s;
-}
-#loader li:nth-child(5) {
-  top: 120px;
-  animation: sequence1 2s ease-in-out infinite 0.4s;
-}
-
-
-#loader2 {
-  position: fixed;
-  left: 110px;
-  right: 0;
-  top: 43.3%;
-  width: 390px;
-}
-#loader2 ul {
-  margin: 0;
-  list-style: none;
-  width: 390px;
-  position: relative;
-  padding: 0;
-  height: 210px;
-}
-#loader2 ul li {
-  position: absolute;
-      right: 0px;
-
-  width: 0px;
-  height: 18px;
-  margin-top:20px;
-  margin-left:100px;
-  background-color: #fff;
-  bottom: 0;
-}
-@keyframes sequence3 {
-  0% {
-    width: 40px;
-  }
-  50% {
-    width: 380px;
-  }
-  100% {
-    width: 40px;
-  }
-}
-@keyframes sequence4 {
-  0% {
-    width: 50px;
-  }
-  50% {
-    width: 295px;
-  }
-  100% {
-    width: 50px;
-  }
-}
-#loader2 li:nth-child(1) {
-  top: 0;
-  animation: sequence3 2s ease infinite 0;
-}
-#loader2 li:nth-child(2) {
-  top: 15px;
-  animation: sequence4 2s ease infinite 0.1s;
-}
-#loader2 li:nth-child(3) {
-  top: 50px;
-  animation: sequence3 2s ease-in-out infinite 0.2s;
-}
-#loader2 li:nth-child(4) {
-  top: 85px;
-  animation: sequence4 2s ease-in infinite 0.3s;
-}
-#loader2 li:nth-child(5) {
-  top: 120px;
-  animation: sequence3 2s ease-in-out infinite 0.4s;
-}
+	@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,700);
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: url(https://cdn.arstechnica.net/wp-content/uploads/2016/10/sierra.jpg);
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .temizle {
+            clear: both;
+        }
+        
+        #kapsa {
+            width: 100%;
+            max-width: 800px;
+            margin: 15px auto 15px auto;
+            opacity: 0.9;
+        }
+        
+        #ust {
+            background: #CEF3DD;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 15px 15px 0 0;
+            padding-right: 10px;
+            padding-left: 14px;
+        }
+        
+        #baslik {
+            display: inline-block;
+            color: darkslategrey;
+        }
+        
+        #islem {
+            float: right;
+        }
+        
+        #y {
+            background: #03d544;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            display: inline-block;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        
+        #s {
+            background: #ffbe03;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            display: inline-block;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        
+        #k {
+            background: #ff4545;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            display: inline-block;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        /* Orta Kısım */
+        
+        #no {
+            width: 41px;
+            background: #263238;
+            text-align: right;
+            padding: 7px 10px 7px 0;
+            float: left;
+            color: #cdd3de;
+        }
+        
+        .numara {
+            display: block;
+        }
+        
+        #satir {
+            background: #1B2225;
+            color: #cdd3de;
+            display: inline-block;
+            padding: 7px 10px;
+            width: calc(100% - 41px);
+        }
+        
+        .yorum {
+            color: #98A8B5;
+            font-weight: 400;
+            display: block;
+        }
+        
+        .yorum a {
+            text-decoration: none;
+            border-bottom: 1px dotted;
+            color: aquamarine;
+            font-weight: 400;
+            font-style: italic;
+        }
+        
+        .cl {
+            color: #8EDCF5;
+        }
+        
+        .id {
+            color: #F3A5F7;
+        }
+        
+        .beyaz {
+            color: #cccccc;
+        }
+        
+        .secici {
+            color: #CDFF8E;
+        }
+        
+        .ozellik {
+            color: #FFFFFF;
+        }
+        
+        .onemli {
+            color: #FFA9A9;
+            font-style: italic;
+        }
+        
+        #alt {
+            background: #CEF3DD;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 0 0 15px 15px;
+            padding-right: 10px;
+            text-align: center;
+        }
+        
+        #alt a {
+            margin-left: 5px;
+            border-bottom: 1px dotted;
+            text-decoration: none;
+            color: #213738;
+        }
 </style>
-<div class="frame1">
-</div>
-<div class="frame1">
-</div>
-<div class="frame1">
-</div>
-<div class="frame1">
-</div>
+
+    <div id="kapsa">
+
+        <div id="ust">
+            <h4 id="baslik">PERSONAL CODE EDITOR</h4>
+            <div id="islem">
+                <div id="y"></div>
+                <div id="s"></div>
+                <div id="k"></div>
+            </div>
+            <div class="temizle"></div>
+        </div>
+
+        <div id="orta">
+
+            <div id="no">
+                <span class="numara">1</span>
+                <span class="numara">2</span>
+                <span class="numara">3</span>
+                <span class="numara">4</span>
+                <span class="numara">5</span>
+                <span class="numara">6</span>
+                <span class="numara">7</span>
+                <span class="numara">8</span>
+                <span class="numara">9</span>
+                <span class="numara">10</span>
+                <span class="numara">11</span>
+                <span class="numara">12</span>
+                <span class="numara">13</span>
+                <span class="numara">14</span>
+                <span class="numara">15</span>
+                <span class="numara">16</span>
+                <span class="numara">17</span>
+                <span class="numara">18</span>
+                <span class="numara">19</span>
+                <span class="numara">20</span>
+                <span class="numara">21</span>
+                <span class="numara">22</span>
+                <span class="numara">23</span>
+                <span class="numara">24</span>
+                <span class="numara">25</span>
+                <span class="numara">26</span>
+                <span class="numara">27</span>
+                <span class="numara">28</span>
+                <span class="numara">29</span>
+                <span class="numara">30</span>
+                <span class="numara">31</span>
+                <span class="numara">32</span>
+                <span class="numara">33</span>
 
 
-<div class="frame2">
-</div>
-<div class="frame2">
-</div>
-<div class="frame2">
-</div>
-<div class="frame2">
-</div>
+            </div>
 
-<article class="screen">
+            <div id="satir">
 
-  <h1 class="title">Ömer Faruk ama Geliştirici Olan</h1>
-  
-  <div id="loader">
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
-  
-   <div id="loader2">
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
+                <span class="yorum">/*<br>&nbsp;&nbsp;&nbsp; Here Is My Profile -> <a href="https://github.com/omerfaruk-shp/">Ömer Faruk</a> <br>*/</span>
+                <br>
+                <span class="cl">.kisisel</span>
+                <br>
+                <span class="beyaz">{</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;ad</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;Omer Faruk</span><span class="beyaz">;</span>
+                <br>
 
 
-			
-		</article>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;yas</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;22</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;hayat</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;aile <span class="onemli">!important</span></span><span class="beyaz">;</span>
+                <br>
+                <span class="beyaz">}</span>
+                <br>
+                <br>
+
+
+                <span class="cl">.egitim</span>
+                <br>
+                <span class="beyaz">{</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;konum</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;istanbul</span><span class="beyaz">;</span>
+                <span class="yorum" style="display:inline-block;">&nbsp;/* Memleket Sivas */</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;okul</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;yok</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;bolum</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;<font color="#D6FF00">"yok"</font></span><span class="beyaz">;</span>
+                <br>
+
+                <span class="beyaz">}</span>
+                <br>
+                <br>
+
+
+
+                <span class="cl">.yetenekler</span>
+                <br>
+                <span class="beyaz">{</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;bash</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
+                <br>
+
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;python</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;php</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;30%</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;C</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;10%</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;bootstrap</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;98%</span><span class="beyaz">;</span>
+                <br>
+
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;Linux</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
+                <br>
+
+                <span class="beyaz">}</span>
+                <br>
+                <br>
+
+                <span class="id">#en-sevdigim-soz</span>
+                <br>
+                <span class="beyaz">{</span>
+                <br>
+
+                <span class="secici">&nbsp;&nbsp;&nbsp;content</span> <span class="beyaz">:</span>
+                <span class="ozellik">&nbsp;<font color="#D6FF00">"ذٰلِكُمُ اللّٰهُ رَبُّكُمْۚ لَٓا اِلٰهَ اِلَّا هُوَۚ خَالِقُ كُلِّ شَيْءٍ فَاعْبُدُوهُۚ وَهُوَ عَلٰى كُلِّ شَيْءٍ وَك۪يلٌ
+"</font></span><span class="beyaz">;</span>
+                <br>
+
+                <span class="beyaz">}</span>
+                <br>
+
+            </div>
+
+            <div class="temizle"></div>
+        </div>
+
+
+        <div id="alt">
+            &copy; <a href="https://codepen.io/codery">Yasin Softaoğlu</a>
+        </div>
+
+    </div>
