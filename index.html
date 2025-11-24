@@ -1,315 +1,182 @@
-<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,700);
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: url(https://cdn.arstechnica.net/wp-content/uploads/2016/10/sierra.jpg);
-            background-size: cover;
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-        
-        .temizle {
-            clear: both;
-        }
-        
-        #kapsa {
-            width: 100%;
-            max-width: 800px;
-            margin: 15px auto 15px auto;
-            opacity: 0.9;
-        }
-        
-        #ust {
-            background: #CEF3DD;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 15px 15px 0 0;
-            padding-right: 10px;
-            padding-left: 14px;
-        }
-        
-        #baslik {
-            display: inline-block;
-            color: darkslategrey;
-        }
-        
-        #islem {
-            float: right;
-        }
-        
-        #y {
-            background: #03d544;
-            width: 12px;
-            height: 12px;
-            border-radius: 100%;
-            display: inline-block;
-            margin: 0 2px;
-            cursor: pointer;
-        }
-        
-        #s {
-            background: #ffbe03;
-            width: 12px;
-            height: 12px;
-            border-radius: 100%;
-            display: inline-block;
-            margin: 0 2px;
-            cursor: pointer;
-        }
-        
-        #k {
-            background: #ff4545;
-            width: 12px;
-            height: 12px;
-            border-radius: 100%;
-            display: inline-block;
-            margin: 0 2px;
-            cursor: pointer;
-        }
-        /* Orta Kısım */
-        
-        #no {
-            width: 41px;
-            background: #263238;
-            text-align: right;
-            padding: 7px 10px 7px 0;
-            float: left;
-            color: #cdd3de;
-        }
-        
-        .numara {
-            display: block;
-        }
-        
-        #satir {
-            background: #1B2225;
-            color: #cdd3de;
-            display: inline-block;
-            padding: 7px 10px;
-            width: calc(100% - 41px);
-        }
-        
-        .yorum {
-            color: #98A8B5;
-            font-weight: 400;
-            display: block;
-        }
-        
-        .yorum a {
-            text-decoration: none;
-            border-bottom: 1px dotted;
-            color: aquamarine;
-            font-weight: 400;
-            font-style: italic;
-        }
-        
-        .cl {
-            color: #8EDCF5;
-        }
-        
-        .id {
-            color: #F3A5F7;
-        }
-        
-        .beyaz {
-            color: #cccccc;
-        }
-        
-        .secici {
-            color: #CDFF8E;
-        }
-        
-        .ozellik {
-            color: #FFFFFF;
-        }
-        
-        .onemli {
-            color: #FFA9A9;
-            font-style: italic;
-        }
-        
-        #alt {
-            background: #CEF3DD;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 0 0 15px 15px;
-            padding-right: 10px;
-            text-align: center;
-        }
-        
-        #alt a {
-            margin-left: 5px;
-            border-bottom: 1px dotted;
-            text-decoration: none;
-            color: #213738;
-        }
-</style>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ömer Faruk | Dijital Kimlik</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <div id="kapsa">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
+                },
+            },
+        }
+    </script>
 
-        <div id="ust">
-            <h4 id="baslik">PERSONAL CODE EDITOR</h4>
-            <div id="islem">
-                <div id="y"></div>
-                <div id="s"></div>
-                <div id="k"></div>
-            </div>
-            <div class="temizle"></div>
-        </div>
+    <style>
+        body { background-color: #0f172a; color: white; }
+        
+        /* Glassmorphism (Buzlu Cam) Efekti */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Buton Stilleri */
+        .glass-btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Yükleniyor Animasyonu */
+        .loading-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden p-4">
 
-        <div id="orta">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-pulse-slow"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-pulse-slow"></div>
 
-            <div id="no">
-                <span class="numara">1</span>
-                <span class="numara">2</span>
-                <span class="numara">3</span>
-                <span class="numara">4</span>
-                <span class="numara">5</span>
-                <span class="numara">6</span>
-                <span class="numara">7</span>
-                <span class="numara">8</span>
-                <span class="numara">9</span>
-                <span class="numara">10</span>
-                <span class="numara">11</span>
-                <span class="numara">12</span>
-                <span class="numara">13</span>
-                <span class="numara">14</span>
-                <span class="numara">15</span>
-                <span class="numara">16</span>
-                <span class="numara">17</span>
-                <span class="numara">18</span>
-                <span class="numara">19</span>
-                <span class="numara">20</span>
-                <span class="numara">21</span>
-                <span class="numara">22</span>
-                <span class="numara">23</span>
-                <span class="numara">24</span>
-                <span class="numara">25</span>
-                <span class="numara">26</span>
-                <span class="numara">27</span>
-                <span class="numara">28</span>
-                <span class="numara">29</span>
-                <span class="numara">30</span>
-                <span class="numara">31</span>
-                <span class="numara">32</span>
-                <span class="numara">33</span>
-
-
+    <div class="relative glass-card rounded-3xl p-8 max-w-sm w-full z-10 transition-all duration-500 hover:shadow-purple-500/20">
+        
+        <div class="flex flex-col items-center mb-8">
+            <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-tr from-pink-500 to-violet-500 rounded-full blur opacity-60"></div>
+                <img id="profile-image" class="relative w-28 h-28 rounded-full object-cover border-4 border-[#0f172a]" src="https://via.placeholder.com/150" alt="Profil">
+                <span class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-4 border-[#0f172a] rounded-full" title="Online"></span>
             </div>
 
-            <div id="satir">
-
-                <span class="yorum">/*<br>&nbsp;&nbsp;&nbsp; Here Is My Profile -> <a href="https://github.com/omerfaruk-shp/">Ömer Faruk</a> <br>*/</span>
-                <br>
-                <span class="cl">.kisisel</span>
-                <br>
-                <span class="beyaz">{</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;ad</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;Omer Faruk</span><span class="beyaz">;</span>
-                <br>
-
-
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;yas</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;22</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;hayat</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;aile <span class="onemli">!important</span></span><span class="beyaz">;</span>
-                <br>
-                <span class="beyaz">}</span>
-                <br>
-                <br>
-
-
-                <span class="cl">.egitim</span>
-                <br>
-                <span class="beyaz">{</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;konum</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;istanbul</span><span class="beyaz">;</span>
-                <span class="yorum" style="display:inline-block;">&nbsp;/* Memleket Sivas */</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;okul</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;yok</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;bolum</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;<font color="#D6FF00">"yok"</font></span><span class="beyaz">;</span>
-                <br>
-
-                <span class="beyaz">}</span>
-                <br>
-                <br>
-
-
-
-                <span class="cl">.yetenekler</span>
-                <br>
-                <span class="beyaz">{</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;bash</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
-                <br>
-
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;python</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;php</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;30%</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;C</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;10%</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;bootstrap</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;98%</span><span class="beyaz">;</span>
-                <br>
-
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;Linux</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;100%</span><span class="beyaz">;</span>
-                <br>
-
-                <span class="beyaz">}</span>
-                <br>
-                <br>
-
-                <span class="id">#en-sevdigim-soz</span>
-                <br>
-                <span class="beyaz">{</span>
-                <br>
-
-                <span class="secici">&nbsp;&nbsp;&nbsp;content</span> <span class="beyaz">:</span>
-                <span class="ozellik">&nbsp;<font color="#D6FF00">"ذٰلِكُمُ اللّٰهُ رَبُّكُمْۚ لَٓا اِلٰهَ اِلَّا هُوَۚ خَالِقُ كُلِّ شَيْءٍ فَاعْبُدُوهُۚ وَهُوَ عَلٰى كُلِّ شَيْءٍ وَك۪يلٌ
-"</font></span><span class="beyaz">;</span>
-                <br>
-
-                <span class="beyaz">}</span>
-                <br>
-
+            <h1 class="mt-5 text-3xl font-bold">Ömer Faruk</h1>
+            <p id="bio-text" class="text-gray-400 text-sm font-medium tracking-wide mt-1 text-center">Software Developer</p>
+            
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+                <span class="px-3 py-1 text-xs font-semibold bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">Python</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20">Cyber Sec</span>
+                <span class="px-3 py-1 text-xs font-semibold bg-red-500/10 text-red-400 rounded-full border border-red-500/20">YouTube</span>
             </div>
-
-            <div class="temizle"></div>
         </div>
 
+        <div class="space-y-3">
+            
+            <a href="https://github.com/omerfaruk-shp?tab=repositories" target="_blank" class="glass-btn flex items-center p-3 rounded-xl group cursor-pointer no-underline">
+                <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-gray-800 rounded-lg text-white group-hover:bg-white group-hover:text-black transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-white group-hover:text-blue-300 transition-colors">GitHub</h3>
+                    <p id="github-stats" class="text-xs text-gray-400 loading-pulse">Bağlanıyor...</p>
+                </div>
+            </a>
 
-        <div id="alt">
-            &copy; <a href="https://github.com/omerfaruk-shp/">Ömer Faruk</a> <br>*/</span>
+            <a href="https://www.youtube.com/@%C3%B6merfaruk-x2f" target="_blank" class="glass-btn flex items-center p-3 rounded-xl group cursor-pointer no-underline">
+                <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-gray-800 rounded-lg text-red-500 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-white group-hover:text-red-300 transition-colors">YouTube</h3>
+                    <p id="youtube-stats" class="text-xs text-gray-400 loading-pulse">Bağlanıyor...</p>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-boz-97b157387/" target="_blank" class="glass-btn flex items-center p-3 rounded-xl group cursor-pointer no-underline">
+                <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-gray-800 rounded-lg text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-white group-hover:text-blue-300 transition-colors">LinkedIn</h3>
+                    <p class="text-xs text-gray-400">Profesyonel Profil</p>
+                </div>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="glass-btn flex items-center p-3 rounded-xl group cursor-pointer no-underline">
+                <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 bg-gray-800 rounded-lg text-pink-500 group-hover:bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-white group-hover:text-pink-300 transition-colors">Instagram</h3>
+                    <p class="text-xs text-gray-400">Günlük Paylaşımlar</p>
+                </div>
+            </a>
+            
         </div>
-
+        <div class="mt-6 text-center text-xs text-gray-500">&copy; 2025 Ömer Faruk</div>
     </div>
+
+    <script>
+        // --- SENİN BİLGİLERİN (HAZIR) ---
+        const YOUTUBE_API_KEY = 'AIzaSyA4Azv91gMRWHktjh_KLImnh0b5oQJ9QTs'; 
+        const CHANNEL_ID = 'UCTZ7MM9boBlD5p2bHLfwQVQ'; 
+        const GITHUB_USER = 'omerfaruk-shp';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGitHubStats();
+            fetchYoutubeStats();
+        });
+
+        // 1. GitHub Verilerini Çek
+        async function fetchGitHubStats() {
+            try {
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
+                const data = await response.json();
+                
+                document.getElementById('github-stats').innerHTML = `
+                    <span class="text-green-400 font-bold">${data.public_repos}</span> Repo | 
+                    <span class="text-green-400 font-bold">${data.followers}</span> Takipçi
+                `;
+                document.getElementById('profile-image').src = data.avatar_url;
+                if(data.bio) document.getElementById('bio-text').textContent = data.bio;
+                document.getElementById('github-stats').classList.remove('loading-pulse');
+            } catch (e) { console.error("GitHub hatası", e); }
+        }
+
+        // 2. YouTube Verilerini Çek
+        async function fetchYoutubeStats() {
+            const statsElement = document.getElementById('youtube-stats');
+            try {
+                const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.items && data.items.length > 0) {
+                    const stats = data.items[0].statistics;
+                    const subCount = formatNumber(stats.subscriberCount);
+                    const viewCount = formatNumber(stats.viewCount);
+
+                    statsElement.innerHTML = `
+                        <span class="text-red-400 font-bold">${subCount}</span> Abone | 
+                        <span class="text-gray-300">${viewCount}</span> Görüntülenme
+                    `;
+                    statsElement.classList.remove('loading-pulse');
+                } else {
+                    statsElement.innerText = "Veri Alınamadı";
+                }
+            } catch (e) {
+                console.error("YouTube hatası", e);
+                statsElement.innerText = "Hata Oluştu";
+            }
+        }
+
+        // Sayı Formatlayıcı
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num;
+        }
+    </script>
+</body>
+</html>
