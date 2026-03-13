@@ -3,454 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Link Hub | Sürücüler İçin Akıllı Asistan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Neural Link Daemon | Gelişmiş HUD Protokolü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- LIQUID GLASS & SÜRÜCÜ TEMASI --- */
+        /* --- ULTRA PREMIUM DARK TECH TEMASI --- */
         :root {
-            --primary-blue: #2563EB;
-            --primary-purple: #8B5CF6;
-            --primary-cyan: #06B6D4;
-            --bg-light: #F1F5F9;
-            --text-dark: #0F172A;
-            --text-muted: #64748B;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+            --bg-base: #030305;
+            --surface: rgba(15, 15, 20, 0.6);
+            --surface-border: rgba(255, 255, 255, 0.04);
+            --accent-cyan: #00F0FF;
+            --accent-purple: #7000FF;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-body);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(112, 0, 255, 0.05) 0%, transparent 50%);
         }
 
-        /* --- GELİŞMİŞ SIVI (LIQUID) ARKA PLAN ANİMASYONLARI --- */
-        .liquid-bg {
+        /* Arka Plan Grid Gürültüsü (Noise) */
+        body::before {
+            content: "";
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
             z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- ORTAK GLASSMORPHISM --- */
+        .bento-glass {
+            background: var(--surface);
+            backdrop-filter: blur(24px) saturate(150%);
+            -webkit-backdrop-filter: blur(24px) saturate(150%);
+            border: 1px solid var(--surface-border);
+            border-radius: 24px;
+            position: relative;
             overflow: hidden;
-            background: #F8FAFC;
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(60px);
-            opacity: 0.6;
-            animation: liquidMorph 12s infinite alternate ease-in-out;
-        }
-
-        .blob-1 {
-            width: 70vw; height: 70vw;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
-            top: -20%; left: -10%;
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-        }
-
-        .blob-2 {
-            width: 50vw; height: 50vw;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-            bottom: -10%; right: -10%;
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation-direction: alternate-reverse;
-            animation-duration: 18s;
-        }
-
-        @keyframes liquidMorph {
-            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: translate(30px, -50px) scale(1.05) rotate(10deg); }
-            66% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; transform: translate(-20px, 30px) scale(0.95) rotate(-5deg); }
-            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0, 0) scale(1) rotate(0deg); }
-        }
-
-        /* --- GLASSMORPHISM ORTAK SINIFI --- */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
 
         /* --- HEADER --- */
         header {
             position: fixed;
             width: 100%;
-            top: 20px;
+            top: 0;
+            padding: 20px 0;
             z-index: 100;
             display: flex;
             justify-content: center;
+            background: linear-gradient(to bottom, rgba(3,3,5,0.9) 0%, transparent 100%);
         }
 
         .nav-container {
             width: 90%;
             max-width: 1200px;
-            padding: 15px 40px;
-            border-radius: 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s;
-        }
-
-        .nav-container:hover {
-            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.15);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            margin-left: 30px;
-            font-size: 15px;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -4px; left: 0;
-            background: var(--primary-purple);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Butonlar */
-        .btn {
-            display: inline-block;
-            padding: 14px 36px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            color: white;
-            box-shadow: 0 10px 20px rgba(144, 19, 254, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(144, 19, 254, 0.4);
-        }
-
-        /* --- SECTIONS --- */
-        section {
-            min-height: 100vh;
-            padding: 160px 10% 80px;
-            max-width: 1400px;
-            margin: 0 auto;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        /* HERO - Sürücü Odaklı */
-        .hero { justify-content: space-between; gap: 60px; }
-        .hero-text { flex: 1; z-index: 10; }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(74, 144, 226, 0.3);
-            color: var(--primary-blue);
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .badge span {
+        .logo-dot {
             width: 8px; height: 8px;
-            background: var(--primary-cyan);
+            background: var(--accent-cyan);
             border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--primary-cyan);
+            box-shadow: 0 0 15px var(--accent-cyan);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
         }
 
-        .hero-text h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            line-height: 1.6;
-            max-width: 550px;
-        }
-
-        /* Cam Pano (Gösterge Paneli Temsili) */
-        .dashboard-glass {
-            flex: 1;
-            height: 400px;
-            border-radius: 40px;
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 0 20px;
             position: relative;
-            overflow: hidden;
-            animation: floatDashboard 6s ease-in-out infinite;
         }
 
-        .dashboard-glass::before {
+        .badge-pro {
+            font-family: var(--font-display);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .btn-glow {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            color: #fff;
+            background: #111;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Buton etrafında dönen enerji efekti */
+        .btn-glow::before {
             content: '';
             position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(30deg);
-            animation: glassShine 4s infinite linear;
+            inset: -2px;
+            border-radius: 14px;
+            background: conic-gradient(from 0deg, transparent 70%, var(--accent-cyan) 80%, var(--accent-purple) 100%);
+            z-index: -1;
+            animation: rotateGlow 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes glassShine {
-            0% { transform: rotate(30deg) translateX(-100%); }
-            100% { transform: rotate(30deg) translateX(100%); }
+        .btn-glow:hover::before { opacity: 1; }
+        .btn-glow:hover { border-color: transparent; }
+
+        @keyframes rotateGlow {
+            100% { transform: rotate(360deg); }
         }
 
-        @keyframes floatDashboard {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        /* --- BENTO BOX (MİMARİ) SECTION --- */
+        .bento-section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .dash-content {
-            text-align: center;
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 320px;
+            gap: 24px;
+        }
+
+        /* Grid Hücre Dağılımları */
+        .cell-1 { grid-column: span 2; }
+        .cell-2 { grid-column: span 1; }
+        .cell-3 { grid-column: span 1; grid-row: span 2; }
+        .cell-4 { grid-column: span 2; }
+
+        .bento-content {
+            padding: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
             z-index: 2;
         }
 
-        .dash-content h2 { font-size: 4rem; color: var(--text-dark); margin-bottom: 5px; }
-        .dash-content p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; }
-        .dash-icon { font-size: 60px; margin-bottom: 10px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-
-        /* --- PROJE VE DOKÜMANTASYON KARTLARI --- */
-        .project-section {
-            flex-direction: column;
-            align-items: flex-start;
+        .bento-glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
-        .section-header { margin-bottom: 60px; max-width: 700px; }
-        .section-header h2 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .section-header p { color: var(--text-muted); font-size: 1.15rem; }
-
-        .doc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            width: 100%;
-        }
-
-        .doc-card {
-            padding: 40px;
-            border-radius: 30px;
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .doc-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .doc-card::after {
+        /* Kart içi Gradient Işıklandırma (Hover efekti) */
+        .bento-glass::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; width: 0; height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
-            transition: width 0.5s ease;
-        }
-
-        .doc-card:hover::after { width: 100%; }
-
-        .doc-icon {
-            width: 70px; height: 70px;
-            background: white;
-            border-radius: 20px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .doc-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--text-dark); }
-        .doc-card p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 20px;}
-
-        /* Özel Doküman Etiketleri */
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tech-tag {
-            padding: 6px 14px;
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--primary-purple);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* JS Scroll Animasyon Sınıfları */
-        .reveal {
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), transparent 50%);
             opacity: 0;
-            transform: translateY(60px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+            transition: opacity 0.5s ease;
+            pointer-events: none;
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .bento-glass:hover::after { opacity: 1; }
 
-        @media (max-width: 960px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 150px; }
-            .hero-text p { margin: 0 auto 40px; }
-            .nav-links { display: none; }
-            .dashboard-glass { width: 100%; height: 300px; }
-            .hero-text h1 { font-size: 3.2rem; }
+        .tech-label {
+            position: absolute;
+            top: 30px; left: 40px;
+            font-family: monospace;
+            color: var(--accent-cyan);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .bento-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .bento-text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        /* Jargon & Kod Kutusu */
+        .code-snippet {
+            position: absolute;
+            top: 30px; right: 40px;
+            font-family: monospace;
+            font-size: 11px;
+            color: #4ADE80;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .cell-1, .cell-4 { grid-column: span 2; }
+            .cell-2, .cell-3 { grid-column: span 1; grid-row: span 1; }
+        }
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .cell-1, .cell-2, .cell-3, .cell-4 { grid-column: span 1; grid-row: span 1; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        /* Scroll Animasyonu Sınıfı */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-    <div class="liquid-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
-
     <header>
-        <nav class="nav-container glass">
-            <div class="logo">NeuralLink Hub</div>
-            <div class="nav-links">
-                <a href="#vizyon">Sürücü Vizyonu</a>
-                <a href="#dokuman">Sistem Mimarisi</a>
-                <a href="#iletisim" class="btn btn-primary" style="padding: 10px 24px; color:white; margin-left: 30px;">Platformu İndir</a>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-dot"></div>
+                NEURAL DAEMON
             </div>
-        </nav>
+            <a href="#mimari" class="btn-glow" style="padding: 10px 24px; font-size: 13px;">Teknik Doküman</a>
+        </div>
     </header>
 
-    <section class="hero reveal">
-        <div class="hero-text">
-            <div class="badge"><span></span> Gidon & Ön Konsol Entegrasyonu</div>
-            <h1>Gözünüz Yolda,<br><span>Aklınız Bizde Kalsın.</span></h1>
-            <p>Motosiklet ve araç sürücüleri için tasarlandı. Telefonunuzu cebinizden çıkarmadan, Yandex navigasyon rotanızı, hayati çağrılarınızı ve filtrelenmiş mesajlarınızı OLED ekranınızda anında görün.</p>
-            <a href="#dokuman" class="btn btn-primary">Mimarisi Nasıl Çalışır?</a>
-        </div>
-        <div class="hero-visual">
-            <div class="dashboard-glass glass">
-                <div class="dash-content">
-                    <div class="dash-icon">↱</div>
-                    <h2>250m</h2>
-                    <p>Kadıköy Yönüne Dönün</p>
-                    <div style="margin-top: 20px; font-size: 14px; color: var(--primary-blue); font-weight: bold; background: white; padding: 5px 15px; border-radius: 20px; display: inline-block;">
-                        Yandex Entegre
-                    </div>
-                </div>
-            </div>
+    <section class="hero">
+        <div class="badge-pro fade-up">Background Telemetry Engine</div>
+        <h1 class="fade-up" style="transition-delay: 0.1s;">Gidonunuzdaki Asenkron <br>Veri Otobanı.</h1>
+        <p class="fade-up" style="transition-delay: 0.2s;">Sıradan bildirim kopyalayıcılarını unutun. Android OS çekirdeğine kanca atan (hook), veriyi heuristik olarak filtreleyen ve sıfır gecikme ile HUD ekranınıza aktaran özel bir yazılım daemon'u geliştirdik.</p>
+        <div class="fade-up" style="transition-delay: 0.3s;">
+            <a href="#mimari" class="btn-glow">Mimarinin İçine Girin</a>
         </div>
     </section>
 
-    <section id="dokuman" class="project-section reveal">
-        <div class="section-header">
-            <h2>Kusursuz Bir Ekosistem.</h2>
-            <p>Neural Link Hub, standart bir Bluetooth modülünden fazlasıdır. Android çekirdeği ile konuşan, sürücünün dikkatini dağıtmayacak verileri süzüp donanıma aktaran akıllı bir protokoldür.</p>
-        </div>
+    <section id="mimari" class="bento-section">
+        <h2 class="section-title fade-up">Yazılım Mimarisi</h2>
+        <p class="section-desc fade-up">Uygulamanın gücü donanımda değil, arka planda (background service) çalışan acımasız filtreleme algoritmasında yatar.</p>
 
-        <div class="doc-grid">
+        <div class="bento-grid">
             
-            <div class="doc-card glass reveal">
-                <div class="doc-icon">🧠</div>
-                <h3>Siber Kanca (Yapay Sinir)</h3>
-                <p>Android'in derinliklerindeki <i>NotificationListenerService</i> mimarisini kullanarak gelen bildirimleri gizli "Bundle" verilerine kadar tarar. Sürücü için gereksiz olan "2 yeni mesaj" gibi özet bildirimleri sistemden engeller.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Gelişmiş Regex</span>
-                    <span class="tech-tag">Background Service</span>
+            <div class="bento-glass cell-1 fade-up">
+                <div class="tech-label">01 // NOTIFICATION_LISTENER_SERVICE</div>
+                <div class="code-snippet">onNotificationPosted(sbn)</div>
+                <div class="bento-content">
+                    <h3 class="bento-title">OS Düzeyinde Siber Kanca</h3>
+                    <p class="bento-text">Sistem, Android'in standart arayüzünü bypass eder. İşletim sistemine düşen her veri paketini (Bundle extras) RAM düzeyinde yakalar. Güvenli sandboxed yapısı sayesinde diğer uygulamaların çalışmasını engellemeden veriyi kopyalar.</p>
                 </div>
             </div>
 
-            <div class="doc-card glass reveal">
-                <div class="doc-icon">📡</div>
-                <h3>Dinamik Veri Protokolü</h3>
-                <p>Yakalanan navigasyon ve mesaj verileri, ESP32 mikrodenetleyicisinin anlayacağı özel bir Prefix (Ön ek) diliyle (Örn: N:1|300m|Kadıköy) paketlenir. Bu sayede donanım hangi veriyi nasıl çizeceğini mili-saniyeler içinde hesaplar.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">BLE 5.0 GATT</span>
-                    <span class="tech-tag">Custom UUIDs</span>
+            <div class="bento-glass cell-2 fade-up" style="transition-delay: 0.1s;">
+                <div class="tech-label">02 // HEURISTIC ENGINE</div>
+                <div class="bento-content">
+                    <h3 class="bento-title">Regex Tabanlı Ayıklama</h3>
+                    <p class="bento-text">Navigasyon rotaları ve anlamsız WhatsApp "summary" (2 yeni mesaj) verileri, milisaniyelik Regex algoritmalarıyla taranır. Yalnızca sürücü için "eyleme geçirilebilir" (actionable) veri süzülür.</p>
                 </div>
             </div>
 
-            <div class="doc-card glass reveal">
-                <div class="doc-icon">🏍️</div>
-                <h3>OLED Sürücü Arayüzü</h3>
-                <p>C++ ile yazılmış donanım kodumuz, I2C protokolü üzerinden SH1106 ekranı kontrol eder. Ekranda akan metinler "Word-Wrap" algoritması sayesinde satırları taşırmaz, sürücüye en net okuma deneyimini sunar.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">U8g2 Kütüphanesi</span>
-                    <span class="tech-tag">I2C Haberleşmesi</span>
+            <div class="bento-glass cell-3 fade-up" style="transition-delay: 0.2s;">
+                <div class="tech-label">03 // BLE 5.0 GATT SERVER</div>
+                <div class="bento-content">
+                    <h3 class="bento-title">Düşük Gecikmeli Telemetri</h3>
+                    <p class="bento-text">Veri ayıklandıktan sonra, Custom UUID Characteristics kullanılarak donanıma seri port (Byte-stream) üzerinden fırlatılır. <i>WithoutResponse</i> protokolü sayesinde asenkron ve tıkanmasız bir aktarım sağlanır.</p>
+                </div>
+            </div>
+
+            <div class="bento-glass cell-4 fade-up" style="transition-delay: 0.3s;">
+                <div class="tech-label">04 // VECTOR PARSING</div>
+                <div class="code-snippet">N:1|300m|Kadıköy</div>
+                <div class="bento-content">
+                    <h3 class="bento-title">Yandex & Google Vektör Çözümleme</h3>
+                    <p class="bento-text">Harita uygulamalarından gelen karmaşık metin blokları (örn: "300 metre sonra döner kavşaktan çıkın") Kotlin scriptimiz tarafından parçalanır. Dönüş ID'si, mesafe ve cadde ismi olarak (N:x|y|z) parse edilerek mikrodenetleyiciye HUD formatında iletilir.</p>
                 </div>
             </div>
 
         </div>
     </section>
-
-    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 15px;">
-        <p>Meraktronik Otomotiv Teknolojileri A.Ş. &copy; 2026 | Sürüş Güvenliği Projesi</p>
-    </footer>
 
     <script>
         const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Bir kere çalışsın
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(element => {
-            observer.observe(element);
+        document.querySelectorAll('.fade-up').forEach((el) => {
+            observer.observe(el);
         });
     </script>
 </body>
