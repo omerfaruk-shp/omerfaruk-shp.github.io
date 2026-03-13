@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Link Hub | Dijital Asistanınız</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Neural Link Hub | Sürücüler İçin Akıllı Asistan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* --- KURUMSAL & LIQUID GLASS TEMASI --- */
+        /* --- LIQUID GLASS & SÜRÜCÜ TEMASI --- */
         :root {
-            --primary-blue: #4A90E2;
-            --primary-purple: #9013FE;
-            --text-dark: #1E293B;
+            --primary-blue: #2563EB;
+            --primary-purple: #8B5CF6;
+            --primary-cyan: #06B6D4;
+            --bg-light: #F1F5F9;
+            --text-dark: #0F172A;
             --text-muted: #64748B;
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
-        /* Akışkan (Liquid) Arka Plan */
         body {
-            background-color: #F8FAFC;
+            background-color: var(--bg-light);
             color: var(--text-dark);
             overflow-x: hidden;
-            position: relative;
         }
 
-        .blob-container {
+        /* --- GELİŞMİŞ SIVI (LIQUID) ARKA PLAN ANİMASYONLARI --- */
+        .liquid-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
@@ -43,46 +44,39 @@
 
         .blob {
             position: absolute;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: liquidFlow 15s infinite alternate cubic-bezier(0.4, 0.0, 0.2, 1);
+            filter: blur(60px);
+            opacity: 0.6;
+            animation: liquidMorph 12s infinite alternate ease-in-out;
         }
 
         .blob-1 {
-            width: 600px; height: 600px;
-            background: var(--primary-blue);
-            top: -10%; left: -10%;
+            width: 70vw; height: 70vw;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            top: -20%; left: -10%;
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
         }
 
         .blob-2 {
-            width: 500px; height: 500px;
-            background: var(--primary-purple);
-            bottom: -10%; right: -5%;
+            width: 50vw; height: 50vw;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            bottom: -10%; right: -10%;
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation-delay: -5s;
+            animation-direction: alternate-reverse;
+            animation-duration: 18s;
         }
 
-        .blob-3 {
-            width: 400px; height: 400px;
-            background: #00E5FF;
-            top: 40%; left: 50%;
-            border-radius: 50%;
-            animation-duration: 20s;
-            transform: translateX(-50%);
+        @keyframes liquidMorph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: translate(30px, -50px) scale(1.05) rotate(10deg); }
+            66% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; transform: translate(-20px, 30px) scale(0.95) rotate(-5deg); }
+            100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0, 0) scale(1) rotate(0deg); }
         }
 
-        @keyframes liquidFlow {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(50px, 30px) scale(1.1) rotate(10deg); }
-            100% { transform: translate(-30px, 60px) scale(0.9) rotate(-10deg); }
-        }
-
-        /* Glassmorphism Sınıfı */
+        /* --- GLASSMORPHISM ORTAK SINIFI --- */
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--glass-border);
             box-shadow: var(--glass-shadow);
         }
@@ -98,13 +92,18 @@
         }
 
         .nav-container {
-            width: 85%;
+            width: 90%;
             max-width: 1200px;
             padding: 15px 40px;
             border-radius: 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s;
+        }
+
+        .nav-container:hover {
+            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.15);
         }
 
         .logo {
@@ -119,29 +118,38 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            margin-left: 35px;
-            font-size: 14px;
-            transition: color 0.3s;
+            margin-left: 30px;
+            font-size: 15px;
+            position: relative;
         }
 
-        .nav-links a:hover { color: var(--primary-purple); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
 
         /* Butonlar */
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 14px 36px;
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             color: white;
-            box-shadow: 0 10px 20px rgba(144, 19, 254, 0.2);
+            box-shadow: 0 10px 20px rgba(144, 19, 254, 0.25);
         }
 
         .btn-primary:hover {
@@ -152,28 +160,45 @@
         /* --- SECTIONS --- */
         section {
             min-height: 100vh;
-            padding: 150px 10% 80px;
+            padding: 160px 10% 80px;
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
             align-items: center;
         }
 
-        /* Hero */
-        .hero { justify-content: space-between; gap: 50px; }
+        /* HERO - Sürücü Odaklı */
+        .hero { justify-content: space-between; gap: 60px; }
         .hero-text { flex: 1; z-index: 10; }
         
         .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(74, 144, 226, 0.1);
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             color: var(--primary-blue);
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 30px;
+            font-size: 13px;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge span {
+            width: 8px; height: 8px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--primary-cyan);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
         }
 
         .hero-text h1 {
@@ -191,205 +216,242 @@
         }
 
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
             margin-bottom: 40px;
-            line-height: 1.7;
-            max-width: 500px;
+            line-height: 1.6;
+            max-width: 550px;
         }
 
-        .hero-visual {
+        /* Cam Pano (Gösterge Paneli Temsili) */
+        .dashboard-glass {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* Cam Ürün Görseli */
-        .product-glass {
-            width: 350px;
-            height: 350px;
+            height: 400px;
             border-radius: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
-            text-align: center;
             position: relative;
-            animation: floatProduct 6s ease-in-out infinite;
+            overflow: hidden;
+            animation: floatDashboard 6s ease-in-out infinite;
         }
 
-        .product-glass h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--text-dark);
+        .dashboard-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            animation: glassShine 4s infinite linear;
         }
 
-        .product-glass p {
-            color: var(--text-muted);
-            font-size: 14px;
+        @keyframes glassShine {
+            0% { transform: rotate(30deg) translateX(-100%); }
+            100% { transform: rotate(30deg) translateX(100%); }
         }
 
-        @keyframes floatProduct {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        @keyframes floatDashboard {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* Özellikler */
-        .features {
-            flex-direction: column;
-            align-items: center;
+        .dash-content {
             text-align: center;
+            z-index: 2;
         }
 
-        .section-header { margin-bottom: 80px; max-width: 600px; }
-        .section-header h2 { font-size: 3rem; margin-bottom: 20px; }
-        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+        .dash-content h2 { font-size: 4rem; color: var(--text-dark); margin-bottom: 5px; }
+        .dash-content p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; }
+        .dash-icon { font-size: 60px; margin-bottom: 10px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 
-        .grid {
+        /* --- PROJE VE DOKÜMANTASYON KARTLARI --- */
+        .project-section {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .section-header { margin-bottom: 60px; max-width: 700px; }
+        .section-header h2 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .section-header p { color: var(--text-muted); font-size: 1.15rem; }
+
+        .doc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             width: 100%;
         }
 
-        .feature-card {
-            padding: 50px 40px;
+        .doc-card {
+            padding: 40px;
             border-radius: 30px;
-            text-align: left;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .doc-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
             background: rgba(255, 255, 255, 0.9);
         }
 
-        .icon-box {
-            width: 60px; height: 60px;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(144, 19, 254, 0.2));
-            border-radius: 16px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 24px;
-            margin-bottom: 25px;
+        .doc-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0; height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+            transition: width 0.5s ease;
         }
 
-        .feature-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .feature-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+        .doc-card:hover::after { width: 100%; }
 
-        /* Kaydırma Animasyon Sınıfları */
+        .doc-icon {
+            width: 70px; height: 70px;
+            background: white;
+            border-radius: 20px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .doc-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--text-dark); }
+        .doc-card p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; margin-bottom: 20px;}
+
+        /* Özel Doküman Etiketleri */
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tech-tag {
+            padding: 6px 14px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary-purple);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* JS Scroll Animasyon Sınıfları */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 900px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 180px; }
+        @media (max-width: 960px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 150px; }
             .hero-text p { margin: 0 auto 40px; }
             .nav-links { display: none; }
-            .product-glass { width: 300px; height: 300px; }
-            .hero-text h1 { font-size: 3rem; }
+            .dashboard-glass { width: 100%; height: 300px; }
+            .hero-text h1 { font-size: 3.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob-container">
+    <div class="liquid-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
     </div>
 
     <header>
         <nav class="nav-container glass">
-            <div class="logo">NeuralLink</div>
+            <div class="logo">NeuralLink Hub</div>
             <div class="nav-links">
-                <a href="#deneyim">Deneyim</a>
-                <a href="#teknoloji">Teknoloji</a>
-                <a href="#ekosistem">Ekosistem</a>
-                <a href="#siparis" class="btn btn-primary" style="padding: 10px 24px; color:white; margin-left: 30px;">Erken Erişim</a>
+                <a href="#vizyon">Sürücü Vizyonu</a>
+                <a href="#dokuman">Sistem Mimarisi</a>
+                <a href="#iletisim" class="btn btn-primary" style="padding: 10px 24px; color:white; margin-left: 30px;">Platformu İndir</a>
             </div>
         </nav>
     </header>
 
     <section class="hero reveal">
         <div class="hero-text">
-            <div class="badge">Yeni Nesil Giyilebilir Teknoloji</div>
-            <h1>Dijital Yaşamınız, <br><span>Kusursuz Bir Akışta.</span></h1>
-            <p>Telefonunuza dokunmadan dünyaya bağlı kalın. Neural Link, en önemli bildirimlerinizi, çağrılarınızı ve navigasyon rotanızı akıllıca filtreleyerek doğrudan görüş alanınıza sunar.</p>
-            <a href="#teknoloji" class="btn btn-primary">Sistemi Keşfedin</a>
+            <div class="badge"><span></span> Gidon & Ön Konsol Entegrasyonu</div>
+            <h1>Gözünüz Yolda,<br><span>Aklınız Bizde Kalsın.</span></h1>
+            <p>Motosiklet ve araç sürücüleri için tasarlandı. Telefonunuzu cebinizden çıkarmadan, Yandex navigasyon rotanızı, hayati çağrılarınızı ve filtrelenmiş mesajlarınızı OLED ekranınızda anında görün.</p>
+            <a href="#dokuman" class="btn btn-primary">Mimarisi Nasıl Çalışır?</a>
         </div>
         <div class="hero-visual">
-            <div class="product-glass glass">
-                <h3 style="background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Yandex Navigasyon</h3>
-                <div style="font-size: 50px; margin: 20px 0;">↗️</div>
-                <h3>300m</h3>
-                <p>Atatürk Bulvarı Yönüne</p>
+            <div class="dashboard-glass glass">
+                <div class="dash-content">
+                    <div class="dash-icon">↱</div>
+                    <h2>250m</h2>
+                    <p>Kadıköy Yönüne Dönün</p>
+                    <div style="margin-top: 20px; font-size: 14px; color: var(--primary-blue); font-weight: bold; background: white; padding: 5px 15px; border-radius: 20px; display: inline-block;">
+                        Yandex Entegre
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="teknoloji" class="features reveal">
+    <section id="dokuman" class="project-section reveal">
         <div class="section-header">
-            <h2>Gürültüyü Susturun,<br>Önceliğe Odaklanın.</h2>
-            <p>Sıradan akıllı saatlerin karmaşasından kurtulun. Neural Link, sadece gerçekten bilmeniz gerekenleri süzerek size ileten yapay zeka destekli bir filtreleme motoruna sahiptir.</p>
+            <h2>Kusursuz Bir Ekosistem.</h2>
+            <p>Neural Link Hub, standart bir Bluetooth modülünden fazlasıdır. Android çekirdeği ile konuşan, sürücünün dikkatini dağıtmayacak verileri süzüp donanıma aktaran akıllı bir protokoldür.</p>
         </div>
 
-        <div class="grid">
-            <div class="feature-card glass reveal">
-                <div class="icon-box">🎯</div>
-                <h3>Akıllı Odak (Smart Focus)</h3>
-                <p>Sürekli titreyen grup mesajlarına ve uygulama reklamlarına son. Özel algoritmamız "2 yeni mesaj" gibi özet bildirimleri engeller, sadece gerçek mesaj içeriğini ekranınıza yansıtır.</p>
+        <div class="doc-grid">
+            
+            <div class="doc-card glass reveal">
+                <div class="doc-icon">🧠</div>
+                <h3>Siber Kanca (Yapay Sinir)</h3>
+                <p>Android'in derinliklerindeki <i>NotificationListenerService</i> mimarisini kullanarak gelen bildirimleri gizli "Bundle" verilerine kadar tarar. Sürücü için gereksiz olan "2 yeni mesaj" gibi özet bildirimleri sistemden engeller.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Gelişmiş Regex</span>
+                    <span class="tech-tag">Background Service</span>
+                </div>
             </div>
 
-            <div class="feature-card glass reveal">
-                <div class="icon-box">🗺️</div>
-                <h3>Kusursuz Rota Entegrasyonu</h3>
-                <p>Yandex ve Google Haritalar ile entegre çalışır. Telefonunuz cebinizdeyken yön okları, mesafe bilgisi ve tahmini varış süresi sıfır gecikme ile ekranınıza akar.</p>
+            <div class="doc-card glass reveal">
+                <div class="doc-icon">📡</div>
+                <h3>Dinamik Veri Protokolü</h3>
+                <p>Yakalanan navigasyon ve mesaj verileri, ESP32 mikrodenetleyicisinin anlayacağı özel bir Prefix (Ön ek) diliyle (Örn: N:1|300m|Kadıköy) paketlenir. Bu sayede donanım hangi veriyi nasıl çizeceğini mili-saniyeler içinde hesaplar.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">BLE 5.0 GATT</span>
+                    <span class="tech-tag">Custom UUIDs</span>
+                </div>
             </div>
 
-            <div class="feature-card glass reveal">
-                <div class="icon-box">⚡</div>
-                <h3>Ultra Düşük Enerji (BLE)</h3>
-                <p>Gelişmiş Bluetooth Low Energy mimarisi sayesinde telefonunuzun ve donanımınızın şarjını tüketmeden gün boyu kesintisiz ve güvenilir veri akışı sağlar.</p>
+            <div class="doc-card glass reveal">
+                <div class="doc-icon">🏍️</div>
+                <h3>OLED Sürücü Arayüzü</h3>
+                <p>C++ ile yazılmış donanım kodumuz, I2C protokolü üzerinden SH1106 ekranı kontrol eder. Ekranda akan metinler "Word-Wrap" algoritması sayesinde satırları taşırmaz, sürücüye en net okuma deneyimini sunar.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">U8g2 Kütüphanesi</span>
+                    <span class="tech-tag">I2C Haberleşmesi</span>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <section id="siparis" class="features reveal" style="min-height: 50vh; padding-top: 50px;">
-        <div class="glass" style="width: 100%; padding: 80px 40px; border-radius: 40px; text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Geleceği Şekillendirenlerden Olun.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">Uygulamamızı indirip Neural Link donanımı ile eşleştirin. Yenilikçi ekosistemimize ilk adımı atın.</p>
-            <a href="#" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">Neural Hub APK İndir</a>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 14px;">
-        <p>Meraktronik Teknoloji A.Ş. &copy; 2026 | Neural Link Hub</p>
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 15px;">
+        <p>Meraktronik Otomotiv Teknolojileri A.Ş. &copy; 2026 | Sürüş Güvenliği Projesi</p>
     </footer>
 
     <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Bir kere çalışsın
                 }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Sayfa yüklendiğinde ilk ekranı tetikle
-        reveal();
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
     </script>
 </body>
 </html>
