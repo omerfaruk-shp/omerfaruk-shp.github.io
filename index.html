@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Link | Güvenli Sürüş Asistanı</title>
+    <title>Neural Link | Akıllı Sürüş Asistanı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- TERTEMİZ KURUMSAL TEMA --- */
@@ -26,15 +26,16 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* --- HEADER --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 20px 0;
+            padding: 15px 0;
             transition: all 0.3s ease;
         }
 
@@ -65,21 +66,21 @@
 
         /* --- ANA EKRAN (HERO) --- */
         .hero {
-            padding: 160px 20px 100px;
+            padding: 140px 20px 80px;
             text-align: center;
             max-width: 900px; margin: 0 auto;
             display: flex; flex-direction: column; align-items: center;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700; line-height: 1.1; letter-spacing: -1px;
             color: var(--primary-color);
             margin-bottom: 24px;
         }
 
         .hero p {
-            font-size: 1.25rem; color: var(--text-muted);
+            font-size: 1.2rem; color: var(--text-muted);
             margin-bottom: 40px; max-width: 700px; font-weight: 400;
         }
 
@@ -94,41 +95,28 @@
             transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
         }
 
-        /* Temsili Ürün Görseli */
-        .product-demo {
-            margin-top: 60px;
-            width: 100%; max-width: 800px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
         /* --- ÖZELLİKLER BÖLÜMÜ --- */
         .section-padding { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
         
         .section-title {
-            text-align: center; font-size: 2.5rem; font-weight: 700;
-            color: var(--primary-color); margin-bottom: 20px; letter-spacing: -1px;
+            text-align: center; font-size: 2.2rem; font-weight: 700;
+            color: var(--primary-color); margin-bottom: 15px; letter-spacing: -0.5px;
         }
         .section-subtitle {
-            text-align: center; color: var(--text-muted); font-size: 1.15rem;
-            max-width: 600px; margin: 0 auto 60px;
+            text-align: center; color: var(--text-muted); font-size: 1.1rem;
+            max-width: 700px; margin: 0 auto 60px;
         }
 
         .grid-3 {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
         }
 
         .feature-card {
             background: var(--card-bg); padding: 40px; border-radius: 16px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
-        .feature-card:hover {
-            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
 
         .feature-icon {
             width: 50px; height: 50px; background-color: rgba(37, 99, 235, 0.1);
@@ -137,74 +125,109 @@
             font-size: 24px; margin-bottom: 20px;
         }
 
-        .feature-card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--primary-color); }
-        .feature-card p { color: var(--text-muted); font-size: 1rem; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 12px; color: var(--primary-color); }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-        /* --- BİLGİ BÖLÜMÜ (NASIL ÇALIŞIR) --- */
-        .info-section {
-            background-color: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.05);
+        /* --- ARAYÜZ (UI) TANITIM BÖLÜMÜ --- */
+        .ui-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 100px 10%;
+            overflow: hidden;
         }
 
-        .info-grid {
+        .ui-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+            max-width: 1200px; margin: 0 auto;
         }
 
-        .info-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--primary-color); letter-spacing: -0.5px;}
-        .info-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; }
+        .ui-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .ui-text p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 20px; line-height: 1.7; }
         
-        .check-list { list-style: none; margin-top: 30px; }
-        .check-list li {
-            display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;
-            color: var(--primary-color); font-weight: 500;
+        .ui-list { list-style: none; margin-top: 30px; }
+        .ui-list li {
+            margin-bottom: 15px; padding-left: 30px; position: relative;
+            color: rgba(255,255,255,0.9);
         }
-        .check-list li::before {
-            content: '✓'; color: white; background-color: var(--accent-color);
-            width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;
-            border-radius: 50%; font-size: 12px; flex-shrink: 0; margin-top: 3px;
+        .ui-list li::before {
+            content: '→'; position: absolute; left: 0; color: #60A5FA; font-weight: bold;
         }
 
-        /* --- GÜVENLİK VE PLAY PROTECT BÖLÜMÜ (YENİ) --- */
-        .security-section {
-            background-color: var(--bg-color);
-            padding: 80px 10%;
+        /* CSS İle Çizilmiş Temsili Mobil Uygulama (Karanlık Tema) */
+        .phone-mockup {
+            width: 300px; height: 600px; margin: 0 auto;
+            background-color: #0A0A12; /* Uygulamanın orijinal arkaplanı */
+            border-radius: 40px;
+            border: 8px solid #1E293B;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            padding: 30px 20px;
+            display: flex; flex-direction: column; align-items: center;
+            position: relative;
+        }
+        .phone-notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 25px; background-color: #1E293B;
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;
+        }
+        .app-title {
+            color: #00E5FF; font-weight: 800; font-size: 18px; letter-spacing: 1px;
+            margin-top: 20px; margin-bottom: 5px; text-align: center;
+        }
+        .app-subtitle { color: gray; font-size: 10px; margin-bottom: 25px; text-align: center; }
+        
+        .app-card {
+            width: 100%; background: linear-gradient(90deg, #00C853, #1B5E20);
+            border-radius: 12px; padding: 15px; text-align: center;
+            color: white; font-weight: bold; font-size: 12px; margin-bottom: 20px;
+        }
+        .app-btn {
+            width: 100%; background-color: #212121; color: white;
+            padding: 15px; border-radius: 8px; text-align: center;
+            font-weight: bold; font-size: 12px; margin-bottom: 20px;
+        }
+        .app-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; width: 100%;
+        }
+        .app-grid-item {
+            background-color: #1E1E2C; border-radius: 8px; padding: 15px 0;
+            text-align: center; color: white; font-size: 10px; font-weight: bold;
+        }
+
+        /* --- ŞEFFAFLIK VE KALDIRMA (GÜVENLİK) BÖLÜMÜ --- */
+        .transparency-section {
+            background-color: #FFFFFF;
+            padding: 100px 10%;
             border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        .security-card {
-            background: #FFFFFF;
-            max-width: 900px; margin: 0 auto;
-            border-radius: 20px; padding: 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            border: 1px solid rgba(37, 99, 235, 0.1);
-            display: flex; gap: 40px; align-items: flex-start;
+        .transparency-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+            max-width: 1200px; margin: 0 auto;
         }
 
-        .shield-icon {
-            width: 80px; height: 80px; flex-shrink: 0;
-            background-color: rgba(37, 99, 235, 0.05);
-            border-radius: 20px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 40px; color: var(--accent-color);
+        .info-box {
+            background: var(--bg-color); padding: 40px; border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .security-content h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--primary-color); }
-        .security-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.7; }
+        .info-box h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.4rem; display: flex; align-items: center; gap: 10px;}
+        .info-box p { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; }
         
-        .install-steps {
-            background: var(--bg-color); padding: 20px 25px; border-radius: 12px;
+        .highlight-box {
+            background-color: rgba(37, 99, 235, 0.05);
             border-left: 4px solid var(--accent-color);
+            padding: 15px 20px; border-radius: 0 8px 8px 0;
+            color: var(--primary-color); font-size: 0.95rem;
             margin-top: 20px;
         }
-        .install-steps strong { color: var(--primary-color); }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--primary-color); color: white;
+            background-color: #0F172A; color: white;
             padding: 60px 10% 40px;
         }
         .footer-content {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: space-between; align-items: flex-start;
             max-width: 1200px; margin: 0 auto;
             border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px;
         }
@@ -212,10 +235,10 @@
             text-align: center; color: rgba(255,255,255,0.6); font-size: 14px;
         }
         .team-names {
-            font-weight: 600; color: white; margin-top: 10px; display: block;
+            font-weight: 600; color: white; margin-top: 5px; display: block;
         }
 
-        /* Sade Scroll Animasyonu */
+        /* Scroll Animasyonu */
         .fade-in {
             opacity: 0; transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -223,13 +246,10 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
-            .info-grid { grid-template-columns: 1fr; }
+            .ui-grid, .transparency-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .security-card { flex-direction: column; padding: 30px; gap: 20px; text-align: center; }
-            .shield-icon { margin: 0 auto; }
-            .install-steps { text-align: left; }
-            .footer-content { flex-direction: column; text-align: center; gap: 20px; }
-            .hero h1 { font-size: 2.8rem; }
+            .footer-content { flex-direction: column; gap: 30px; text-align: center; align-items: center;}
+            .phone-mockup { margin-top: 40px; }
         }
     </style>
 </head>
@@ -239,100 +259,121 @@
         <div class="nav-container">
             <div class="logo">Neural Link.</div>
             <div class="nav-links">
-                <a href="#neden">Neden Biz?</a>
                 <a href="#ozellikler">Özellikler</a>
-                <a href="#nasil-calisir">Nasıl Çalışır?</a>
+                <a href="#arayuz">Uygulama Arayüzü</a>
+                <a href="#guvenlik">Gizlilik ve Kontrol</a>
             </div>
-            <a href="#kurulum" class="btn-header">Uygulamayı İndir</a>
+            <a href="#kurulum" class="btn-header">Sistemi İndir</a>
         </div>
     </header>
 
     <section class="hero fade-in">
         <h1>Gözünüz Yolda, <br>Kontrol Sizde Olsun.</h1>
-        <p>Motosiklet ve araç sürücüleri için tasarlanan Neural Link, dikkatinizi dağıtmadan telefonunuzdaki en önemli bilgileri doğrudan görüş alanınıza taşır.</p>
-        <a href="#ozellikler" class="btn-main">Sistemi İnceleyin</a>
-        
-        <div class="product-demo fade-in">
-            <p style="color: var(--text-muted); font-size: 14px; font-weight: 600; letter-spacing: 1px; margin-bottom: 15px;">YANDEX HARİTALAR</p>
-            <div style="font-size: 50px; color: var(--accent-color); margin-bottom: 10px;">↱</div>
-            <h2 style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 5px;">300m</h2>
-            <p style="font-size: 1.2rem; color: var(--text-muted);">Atatürk Bulvarı Yönüne Dönün</p>
-        </div>
+        <p>Motorlu taşıt sürücüleri için tasarlanan Neural Link; telefonunuzdaki Yandex navigasyonunu, çağrıları ve acil mesajları dikkatinizi dağıtmadan doğrudan harici bilgi ekranınıza (HUD) aktarır.</p>
+        <a href="#ozellikler" class="btn-main">Detayları İnceleyin</a>
     </section>
 
     <section id="ozellikler" class="section-padding">
-        <h2 class="section-title fade-in">Sürüş Güvenliğinde Yeni Standart</h2>
-        <p class="section-subtitle fade-in">Telefon ekranına bakmak kazalara yol açar. Neural Link, sürüş konforunuzu bozmadan ihtiyacınız olan tüm bilgileri size sunar.</p>
+        <h2 class="section-title fade-in">Neden Neural Link Kullanmalısınız?</h2>
+        <p class="section-subtitle fade-in">Sürüş güvenliğinizi tehlikeye atmadan, ihtiyacınız olan dijital bilgilere anında ulaşmanın en güvenilir yolu.</p>
 
         <div class="grid-3">
             <div class="feature-card fade-in">
                 <div class="feature-icon">🛡️</div>
-                <h3>Maksimum Güvenlik</h3>
-                <p>Seyir halindeyken telefonunuzu cebinizden çıkarmanıza gerek kalmaz. Navigasyon yönlendirmeleri ve arayan kişi bilgisi anında ekranınıza yansır.</p>
+                <h3>Dikkatiniz Dağılmaz</h3>
+                <p>Telefonunuzu cebinizden çıkarmaya veya konsoldaki ekrana uzanmaya gerek kalmaz. Sadece sizin belirlediğiniz önemli bilgiler, doğrudan göz hizanızdaki harici ekrana gelir.</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon">🎯</div>
-                <h3>Akıllı Filtreleme</h3>
-                <p>Uygulamamız sadece sizin için önemli olan çağrıları ve gerçek mesajları seçerek ekranınıza gönderir, gereksiz bildirimleri engeller.</p>
+                <div class="feature-icon">🚦</div>
+                <h3>Kusursuz Harita Uyumu</h3>
+                <p>Yandex ve Google Haritalar ile entegre çalışır. "300 metre sonra sağa dönün" gibi kritik yol tarifleri, sesin yanı sıra görsel oklar ve mesafe bilgisiyle anında ekranınıza yansır.</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon">🔋</div>
-                <h3>Pil Dostu Bağlantı</h3>
-                <p>Gün boyu kesintisiz ve enerji tasarruflu bir kullanım sağlar. Telefonunuzun şarjını hızla tüketmez.</p>
+                <div class="feature-icon">📵</div>
+                <h3>Gereksiz Bildirimleri Engeller</h3>
+                <p>Sürüş sırasında sürekli titreyen telefonlardan ve anlamsız WhatsApp bildirimlerinden kurtulun. Sistemimiz reklamları ve özet bildirimleri filtreleyerek sadece gerçek mesajları size sunar.</p>
             </div>
         </div>
     </section>
 
-    <section id="nasil-calisir" class="info-section section-padding">
-        <div class="info-grid">
-            <div class="info-text fade-in">
-                <h2>Telefonunuz Sizin Yerine Düşünür.</h2>
-                <p>Neural Link uygulaması, karmaşık ayarlarla uğraşmanızı gerektirmez. Telefonunuza kurduğunuz an arka planda sessizce çalışmaya başlar ve Bluetooth ile cihazınıza otomatik bağlanır.</p>
-                <ul class="check-list">
-                    <li>Yandex ve Google Haritalar ile tam uyum.</li>
-                    <li>Sadece önemli olan WhatsApp mesajları ve çağrılar.</li>
-                    <li>Güneş ışığında bile net okunan parlak gösterge ekranı.</li>
+    <section id="arayuz" class="ui-section">
+        <div class="ui-grid">
+            <div class="ui-text fade-in">
+                <h2>Karmaşadan Uzak, <br>Sade ve Karanlık Tema</h2>
+                <p>Göz yormayan profesyonel "Dark Mode" arayüzümüz sayesinde, uygulamayı kullanmak son derece basittir. Menüler arasında kaybolmazsınız.</p>
+                
+                <ul class="ui-list">
+                    <li><strong>Tek Tuşla Bağlantı:</strong> Uygulamayı açın ve cihazınıza anında bağlanın.</li>
+                    <li><strong>Bağlantı Durum Takibi:</strong> Ekrandaki yeşil ve kırmızı göstergelerle sistemin aktifliğini anlık görün.</li>
+                    <li><strong>Hızlı Test Paneli:</strong> Cihazınızın düzgün çalıştığını yolculuğa çıkmadan önce uygulama içindeki test butonlarıyla (Harita, Çağrı) kontrol edin.</li>
+                    <li><strong>Veri Terminali:</strong> Cihazınıza giden tüm verileri anlık ve şeffaf bir şekilde ekranın alt kısmından takip edin.</li>
                 </ul>
             </div>
-            <div class="fade-in" style="background: var(--bg-color); border-radius: 24px; padding: 40px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
-                <div style="width: 80px; height: 80px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 20px;">📱</div>
-                <h3 style="margin-bottom: 10px; color: var(--primary-color);">Mobil Uygulama Hazır</h3>
-                <p style="color: var(--text-muted); margin-bottom: 20px;">Uygulamayı telefonunuza indirin, cihazınızla eşleştirin ve güvenli sürüşün tadını çıkarın.</p>
-                <a href="#kurulum" class="btn-main" style="padding: 12px 24px; font-size: 14px;">Hemen İndir</a>
+            
+            <div class="fade-in">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="app-title">NEURAL LINK HUB</div>
+                    <div class="app-subtitle">Akıllı Sürüş Asistanı</div>
+                    
+                    <div class="app-card">✓ BLE BAĞLI VE AKTİF!</div>
+                    <div class="app-btn">YENİDEN TARAMA YAP</div>
+                    
+                    <div style="width:100%; text-align:left; color:gray; font-size:10px; margin-bottom:10px;">HIZLI TEST PANELİ</div>
+                    <div class="app-grid">
+                        <div class="app-grid-item" style="color:#00B0FF;">Harita</div>
+                        <div class="app-grid-item" style="color:#00E676;">WhatsApp</div>
+                        <div class="app-grid-item" style="color:#FF1744;">Çağrı</div>
+                    </div>
+                    
+                    <div style="width:100%; height:80px; background:#12121A; border:1px solid #2C2C3E; border-radius:8px; margin-top:20px; padding:10px; color:#00E5FF; font-size:9px; font-family:monospace; text-align:left;">
+                        [14:30:05] -> N:1|300m|Kadıköy<br>
+                        <span style="color:#E0E0E0;">[14:31:12] -> T:Annem Arıyor</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="kurulum" class="security-section">
-        <div class="security-card fade-in">
-            <div class="shield-icon">🔒</div>
-            <div class="security-content">
-                <h3>Güvenli Kurulum ve Play Protect Bilgilendirmesi</h3>
-                <p>Uygulamamızı telefonunuza kurarken <strong>"Google Play Protect"</strong> tarafından bir güvenlik uyarısı görebilirsiniz. Bu, Play Store dışından indirilen ve <i>"Bildirim Okuma"</i> yetkisi isteyen tüm uygulamalar için gösterilen standart ve otomatik bir uyarıdır.</p>
-                
-                <p>Neural Link, size gelen navigasyon bildirimlerini cihazınıza yansıtabilmek için bu izne ihtiyaç duyar. <strong>%100 Çevrimdışı</strong> çalışır; hiçbir kişisel veriniz internete aktarılmaz, sadece telefonunuz ile cihazınız arasında güvenli Bluetooth ağı üzerinden iletilir.</p>
-
-                <div class="install-steps">
-                    <p style="margin-bottom: 5px;"><strong>Kurulumu tamamlamak için:</strong></p>
-                    <p>Uyarı ekranında <strong>"Daha fazla ayrıntı"</strong> (veya Details) seçeneğine dokunun ve ardından <strong>"Yine de yükle"</strong> butonuna basarak kurulumu güvenle bitirin.</p>
+    <section id="guvenlik" class="transparency-section">
+        <div class="section-title fade-in" style="font-size: 2rem; margin-bottom: 50px;">Şeffaflık ve Veri Kontrolü</div>
+        
+        <div class="transparency-grid">
+            
+            <div class="info-box fade-in">
+                <h3>🔒 Güvenli Kurulum (Play Protect)</h3>
+                <p>Uygulamamızı kurarken <strong>"Google Play Protect"</strong> uyarısı görebilirsiniz. Bu, resmi mağaza dışından indirilen ve donanıma bağlanma yetkisi olan uygulamalar için standart bir Android güvenlik prosedürüdür.</p>
+                <p>Neural Link, %100 çevrimdışı çalışır. İnternet bağlantısına ihtiyaç duymaz ve hiçbir kişisel verinizi sunuculara göndermez. Veriler sadece sizin telefonunuz ve cihazınız arasında kalır.</p>
+                <div class="highlight-box">
+                    <strong>Kurulum İçin:</strong> Uyarı ekranında "Daha fazla ayrıntı" seçeneğine tıklayıp "Yine de yükle" diyerek işlemi güvenle tamamlayabilirsiniz.
                 </div>
             </div>
+
+            <div class="info-box fade-in">
+                <h3>⚙️ İzinleri Yönetmek ve Vazgeçmek</h3>
+                <p>Kontrol her zaman sizdedir. Uygulamamız cihazınızın derinliklerine saklanmaz veya silinmesi zor dosyalar bırakmaz.</p>
+                <p>Sistemi kullanmaya ara vermek isterseniz telefonunuzun <strong>Ayarlar > Bildirim Erişimi</strong> menüsünden uygulamanın iznini tek tuşla kapatabilirsiniz. Bu işlem, uygulamanın veri okumasını anında durdurur.</p>
+                <div class="highlight-box" style="border-color: #EF4444; background-color: rgba(239, 68, 68, 0.05); color: #B91C1C;">
+                    <strong>Kalıcı Olarak Silmek:</strong> Uygulamayı cihazınızdan standart bir şekilde (üzerine basılı tutup "Kaldır" diyerek) tamamen silebilirsiniz. Telefonunuzda hiçbir kalıntı, arka plan hizmeti veya gizli dosya bırakmaz.
+                </div>
+            </div>
+
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
             <div>
-                <h2 style="font-size: 24px; margin-bottom: 10px;">Neural Link</h2>
-                <p style="color: rgba(255,255,255,0.7); max-width: 300px;">Motorlu taşıt sürücüleri için güvenli, akıllı ve kesintisiz sürüş asistanı.</p>
+                <h2 style="font-size: 20px; margin-bottom: 10px;">Neural Link Ekosistemi</h2>
+                <p style="color: rgba(255,255,255,0.7); max-width: 350px;">Sürüş sırasında teknolojiyle olan etkileşiminizi en güvenilir, en şeffaf ve en güvenli hale getirmek için tasarlandı.</p>
             </div>
             <div style="text-align: right;">
-                <p style="color: rgba(255,255,255,0.7); margin-bottom: 10px;">İletişim & Destek</p>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 5px;">Proje İletişimi</p>
                 <a href="mailto:iletisim@meraktronik.com" style="color: white; font-weight: 600; text-decoration: none;">iletisim@meraktronik.com</a>
             </div>
         </div>
         <div class="footer-credits">
-            <p>Meraktronik A.Ş. &copy; 2026 Tüm Hakları Saklıdır.</p>
+            <p><strong>MeraktronikHUB</strong> &copy; 2026 Tüm Hakları Saklıdır.</p>
             <span class="team-names">Geliştirici Ekip: Ömer Akın & Ömer Faruk</span>
         </div>
     </footer>
@@ -345,9 +386,9 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
-</html>
+</html>v
