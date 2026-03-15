@@ -14,7 +14,7 @@
             --primary-color: #0F172A;
             --accent-color: #2563EB;
             --card-bg: #FFFFFF;
-            --hub-orange: #FFA300; /* O meşhur turuncu */
+            --hub-orange: #FFA300; /* Meşhur turuncu */
         }
 
         * {
@@ -32,34 +32,22 @@
 
         /* --- O MEŞHUR LOGO STİLİ --- */
         .hub-logo {
-            display: inline-flex;
-            align-items: center;
-            font-weight: 800;
-            font-size: 22px;
-            letter-spacing: -0.5px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; font-weight: 800; font-size: 22px;
+            letter-spacing: -0.5px; text-decoration: none;
         }
-        .hub-text-1 {
-            color: var(--primary-color);
-        }
+        .hub-text-1 { color: var(--primary-color); }
         .hub-badge {
-            background-color: var(--hub-orange);
-            color: #000000;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-left: 2px;
-            display: inline-block;
-            line-height: 1;
+            background-color: var(--hub-orange); color: #000000;
+            padding: 2px 8px; border-radius: 6px; margin-left: 2px;
+            display: inline-block; line-height: 1.1;
         }
-        .footer .hub-text-1 { color: #FFFFFF; } /* Footer için beyaz versiyon */
+        .footer .hub-text-1 { color: #FFFFFF; } 
 
         /* --- HEADER --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;
             transition: all 0.3s ease;
         }
 
@@ -76,43 +64,36 @@
         .nav-links a:hover { color: var(--accent-color); }
 
         .btn-header {
-            background-color: var(--primary-color);
-            color: white; padding: 10px 24px; border-radius: 8px;
-            text-decoration: none; font-size: 14px; font-weight: 600;
+            background-color: var(--primary-color); color: white; padding: 10px 24px; 
+            border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600;
             transition: background-color 0.3s;
         }
         .btn-header:hover { background-color: var(--accent-color); }
 
         /* --- ANA EKRAN (HERO) --- */
         .hero {
-            padding: 140px 20px 80px;
-            text-align: center;
+            padding: 140px 20px 80px; text-align: center;
             max-width: 900px; margin: 0 auto;
             display: flex; flex-direction: column; align-items: center;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
-            color: var(--primary-color);
-            margin-bottom: 24px;
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; 
+            letter-spacing: -1.5px; color: var(--primary-color); margin-bottom: 24px;
         }
 
         .hero p {
-            font-size: 1.2rem; color: var(--text-muted);
-            margin-bottom: 40px; max-width: 700px; font-weight: 400;
+            font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; 
+            max-width: 700px; font-weight: 400;
         }
 
         .btn-main {
             display: inline-block; padding: 16px 40px; border-radius: 8px;
             background-color: var(--accent-color); color: white;
             text-decoration: none; font-size: 16px; font-weight: 600;
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); transition: all 0.3s ease;
         }
-        .btn-main:hover {
-            transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
-        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3); }
 
         /* --- ÖZELLİKLER BÖLÜMÜ --- */
         .section-padding { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
@@ -147,12 +128,76 @@
         .feature-card h3 { font-size: 1.2rem; margin-bottom: 12px; color: var(--primary-color); font-weight: 700;}
         .feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
+        /* --- MOBİL ARAYÜZ (UI) TANITIM BÖLÜMÜ (GERİ GELDİ!) --- */
+        .ui-section {
+            background-color: var(--primary-color); color: white;
+            padding: 100px 10%; overflow: hidden;
+        }
+
+        .ui-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        .ui-text h2 { font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;}
+        .ui-text p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 20px; line-height: 1.7; }
+        
+        .ui-list { list-style: none; margin-top: 30px; }
+        .ui-list li {
+            margin-bottom: 20px; padding-left: 35px; position: relative;
+            color: rgba(255,255,255,0.9); font-size: 1rem;
+        }
+        .ui-list li::before {
+            content: '✓'; position: absolute; left: 0; color: #000; background-color: #60A5FA;
+            width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;
+            border-radius: 50%; font-size: 12px; font-weight: bold; top: 3px;
+        }
+
+        /* CSS İle Çizilmiş Temsili Mobil Uygulama (Dark Theme) */
+        .phone-mockup {
+            width: 320px; height: 640px; margin: 0 auto;
+            background-color: #0A0A12; /* Uygulamanın orijinal arkaplanı */
+            border-radius: 40px; border: 8px solid #1E293B;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5); padding: 30px 20px;
+            display: flex; flex-direction: column; align-items: center; position: relative;
+        }
+        .phone-notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 25px; background-color: #1E293B;
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;
+        }
+        .app-title {
+            color: #00E5FF; font-weight: 900; font-size: 20px; letter-spacing: 1px;
+            margin-top: 25px; margin-bottom: 5px; text-align: center;
+        }
+        .app-subtitle { color: gray; font-size: 11px; margin-bottom: 30px; text-align: center; }
+        
+        .app-card {
+            width: 100%; background: linear-gradient(90deg, #00C853, #1B5E20);
+            border-radius: 12px; padding: 18px; text-align: center;
+            color: white; font-weight: bold; font-size: 13px; margin-bottom: 20px;
+        }
+        .app-btn {
+            width: 100%; background-color: #212121; color: white;
+            padding: 18px; border-radius: 10px; text-align: center;
+            font-weight: bold; font-size: 13px; margin-bottom: 25px; border: 1px solid #333;
+        }
+        .app-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 25px;
+        }
+        .app-grid-item {
+            background-color: #1E1E2C; border-radius: 10px; padding: 18px 0;
+            text-align: center; color: white; font-size: 11px; font-weight: bold;
+        }
+        .terminal-box {
+            width: 100%; height: 100px; background:#12121A; border:1px solid #2C2C3E; 
+            border-radius:10px; padding:12px; color:#00E5FF; font-size:10px; 
+            font-family:monospace; text-align:left; overflow:hidden;
+        }
+
         /* --- DETAYLI TEKNİK BİLGİ BÖLÜMÜ --- */
         .tech-details {
-            background-color: #FFFFFF;
-            padding: 80px 10%;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background-color: #FFFFFF; padding: 80px 10%;
         }
         .tech-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
@@ -162,18 +207,12 @@
         .tech-text p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.7;}
         
         .tech-list { list-style: none; margin-top: 20px; }
-        .tech-list li {
-            margin-bottom: 15px; padding-left: 30px; position: relative;
-            color: var(--primary-color); font-weight: 500;
-        }
-        .tech-list li::before {
-            content: '⚡'; position: absolute; left: 0; top: 0; font-size: 14px;
-        }
+        .tech-list li { margin-bottom: 15px; padding-left: 30px; position: relative; color: var(--primary-color); font-weight: 500;}
+        .tech-list li::before { content: '⚡'; position: absolute; left: 0; top: 0; font-size: 14px;}
 
         /* --- GÜVENLİK VE PLAY PROTECT BÖLÜMÜ --- */
         .transparency-section {
-            background-color: var(--bg-color);
-            padding: 100px 10%;
+            background-color: var(--bg-color); padding: 100px 10%; border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .transparency-grid {
@@ -183,45 +222,30 @@
 
         .info-box {
             background: #FFFFFF; padding: 40px; border-radius: 16px;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .info-box h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; font-weight: 700;}
         .info-box p { color: var(--text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; }
         
         .highlight-box {
-            background-color: rgba(37, 99, 235, 0.05);
-            border-left: 4px solid var(--accent-color);
-            padding: 15px 20px; border-radius: 0 8px 8px 0;
-            color: var(--primary-color); font-size: 0.95rem;
-            margin-top: 20px;
+            background-color: rgba(37, 99, 235, 0.05); border-left: 4px solid var(--accent-color);
+            padding: 15px 20px; border-radius: 0 8px 8px 0; color: var(--primary-color); font-size: 0.95rem; margin-top: 20px;
         }
 
         .warning-box {
-            background-color: rgba(239, 68, 68, 0.05);
-            border-left: 4px solid #EF4444;
-            padding: 15px 20px; border-radius: 0 8px 8px 0;
-            color: #B91C1C; font-size: 0.95rem;
-            margin-top: 20px;
+            background-color: rgba(239, 68, 68, 0.05); border-left: 4px solid #EF4444;
+            padding: 15px 20px; border-radius: 0 8px 8px 0; color: #B91C1C; font-size: 0.95rem; margin-top: 20px;
         }
 
         /* --- FOOTER --- */
-        footer {
-            background-color: #0F172A; color: white;
-            padding: 60px 10% 40px;
-        }
+        footer { background-color: #0F172A; color: white; padding: 60px 10% 40px; }
         .footer-content {
             display: flex; justify-content: space-between; align-items: flex-start;
-            max-width: 1200px; margin: 0 auto;
-            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px;
+            max-width: 1200px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px; margin-bottom: 30px;
         }
-        .footer-credits {
-            text-align: center; color: rgba(255,255,255,0.6); font-size: 14px;
-        }
-        .team-names {
-            font-weight: 600; color: white; margin-top: 5px; display: block;
-        }
+        .footer-credits { text-align: center; color: rgba(255,255,255,0.6); font-size: 14px; }
+        .team-names { font-weight: 600; color: white; margin-top: 5px; display: block; }
 
         /* Scroll Animasyonu */
         .fade-in {
@@ -231,9 +255,10 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
-            .grid-3, .transparency-grid, .tech-grid { grid-template-columns: 1fr; }
+            .grid-3, .transparency-grid, .tech-grid, .ui-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .footer-content { flex-direction: column; gap: 30px; text-align: center; align-items: center;}
+            .phone-mockup { margin-top: 20px; }
         }
     </style>
 </head>
@@ -247,8 +272,8 @@
             
             <div class="nav-links">
                 <a href="#ozellikler">Özellikler</a>
-                <a href="#detaylar">Sistem Detayları</a>
-                <a href="#kurulum">Kurulum & Güvenlik</a>
+                <a href="#arayuz">Uygulama</a>
+                <a href="#detaylar">Detaylar</a>
             </div>
             <a href="#kurulum" class="btn-header">Sistemi İndir</a>
         </div>
@@ -283,6 +308,46 @@
         </div>
     </section>
 
+    <section id="arayuz" class="ui-section">
+        <div class="ui-grid">
+            <div class="ui-text fade-in">
+                <h2>Karmaşadan Uzak, <br>Karanlık Tema (Dark Mode)</h2>
+                <p>Göz yormayan profesyonel arayüzümüz sayesinde, uygulamayı kullanmak son derece basittir. Menüler arasında kaybolmazsınız; her şey tek bir ana ekranda toplanmıştır.</p>
+                
+                <ul class="ui-list">
+                    <li><strong>Canlı Durum Takibi:</strong> Bağlantı durumunu anlık renk kodlarıyla (Yeşil/Kırmızı) cihazınıza bakmadan bile anlayın.</li>
+                    <li><strong>Hızlı Test Paneli:</strong> Yola çıkmadan önce Harita, WhatsApp ve Çağrı sistemlerinin ekrana doğru yansıyıp yansımadığını tek dokunuşla test edin.</li>
+                    <li><strong>Veri Akış Terminali:</strong> Ekranın alt kısmında bulunan şeffaf terminal sayesinde, telefonunuzdan donanıma gönderilen tüm komutları saniye saniye izleyin.</li>
+                </ul>
+            </div>
+            
+            <div class="fade-in">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="app-title">NEURAL LINK HUB</div>
+                    <div class="app-subtitle">Akıllı Sürüş Asistanı</div>
+                    
+                    <div class="app-card">✓ BLE BAĞLI VE AKTİF!</div>
+                    <div class="app-btn">YENİDEN TARAMA YAP</div>
+                    
+                    <div style="width:100%; text-align:left; color:#BDBDBD; font-size:11px; font-weight:bold; margin-bottom:10px;">HIZLI TEST PANELİ</div>
+                    <div class="app-grid">
+                        <div class="app-grid-item" style="color:#00B0FF;">📍 Harita</div>
+                        <div class="app-grid-item" style="color:#00E676;">💬 WhatsApp</div>
+                        <div class="app-grid-item" style="color:#FF1744;">📞 Çağrı</div>
+                    </div>
+                    
+                    <div style="width:100%; text-align:left; color:#BDBDBD; font-size:11px; font-weight:bold; margin-bottom:8px;">SİSTEM TERMİNALİ</div>
+                    <div class="terminal-box">
+                        [14:30:05] -> N:1|300m|Kadıköy<br>
+                        <span style="color:#E0E0E0;">[14:31:12] -> T:Patron Arıyor</span><br>
+                        <span style="color:#E0E0E0;">[14:32:01] -> W:Ahmet|Neredesin?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="detaylar" class="tech-details">
         <div class="tech-grid">
             <div class="tech-text fade-in">
@@ -290,14 +355,13 @@
                 <p>Sistemimiz sadece bir yansıtıcı değildir; telefonunuzun bataryasını koruyan ve sürüş deneyiminizi iyileştiren gizli detaylara sahiptir.</p>
                 <ul class="tech-list">
                     <li><strong>Otomatik Yeniden Bağlanma:</strong> Cihazdan uzaklaşıp tekrar yaklaştığınızda, Bluetooth sistemi siz cebinizden telefonu çıkarmadan otomatik olarak tekrar eşleşir.</li>
-                    <li><strong>%100 Çevrimdışı (Offline) İşlem:</strong> Gelen bildirimlerin ayıklanması ve harita rotalarının hesaplanması tamamen telefonunuzun içinde yapılır. İnternet kotanızı harcamaz veya gecikme yaşatmaz.</li>
-                    <li><strong>Saat ve Batarya Senkronizasyonu:</strong> Her 60 saniyede bir telefonunuzun şarj durumu ve güncel saat bilgisi donanımınıza iletilir.</li>
+                    <li><strong>%100 Çevrimdışı (Offline) İşlem:</strong> Gelen bildirimlerin ayıklanması tamamen telefonunuzun içinde yapılır. İnternet kotanızı harcamaz veya gecikme yaşatmaz.</li>
                 </ul>
             </div>
             <div class="fade-in" style="background: var(--bg-color); padding: 40px; border-radius: 20px; text-align: center;">
                 <div style="font-size: 60px; margin-bottom: 20px;">⏱️</div>
                 <h3 style="color: var(--primary-color); margin-bottom: 10px;">Sıfır Gecikme</h3>
-                <p style="color: var(--text-muted);">Uygulama, verileri yakaladığı milisaniye içerisinde özel bir algoritma ile paketleyip ekrana gönderir. Dönüşleri asla kaçırmazsınız.</p>
+                <p style="color: var(--text-muted);">Uygulama, verileri yakaladığı milisaniye içerisinde şifreleyip ekrana gönderir. Dönüşleri asla kaçırmazsınız.</p>
             </div>
         </div>
     </section>
@@ -309,22 +373,22 @@
             
             <div class="info-box fade-in">
                 <h3>🔒 Play Protect Uyarısı ve Çözümü</h3>
-                <p>Uygulamamız henüz resmi Google Play Store'da yayınlanmadığı (Geliştirici Sürümü olduğu) ve <i>"Bildirim Okuma"</i> yetkisi istediği için Android sistemi kurulum sırasında güvenlik uyarısı verebilir.</p>
+                <p>Uygulamamız cihazın dış ekranına veri aktarabilmek için sistemden <i>"Bildirim Okuma"</i> yetkisi ister. Bu yüzden kurulum sırasında Android cihazınız standart bir güvenlik uyarısı verebilir.</p>
                 <p>Kurulumu sorunsuz tamamlamak için şu adımları izleyebilirsiniz:</p>
                 <div class="highlight-box">
-                    <strong>1. Geçici Olarak Kapatmak (Önerilen):</strong> <br>
-                    Google Play Store'u açın > Sağ üstteki Profilinize tıklayın > <strong>Play Protect</strong> > Sağ üstteki Ayarlar (Çark) > <em>"Uygulamaları Play Protect ile tara"</em> seçeneğini kapatın.<br><br>
-                    <strong>2. Doğrudan Kurulum:</strong> <br>
-                    Uyarı ekranında <strong>"Daha fazla ayrıntı"</strong> seçeneğine tıklayıp <strong>"Yine de yükle"</strong> diyerek işlemi bitirin.
+                    <strong>1. Kuruluma İzin Verin:</strong> <br>
+                    Uyarı ekranında <strong>"Daha fazla ayrıntı"</strong> seçeneğine tıklayıp <strong>"Yine de yükle"</strong> diyerek işlemi bitirin.<br><br>
+                    <strong>2. Geçici Olarak Kapatmak (Alternatif):</strong> <br>
+                    Google Play Store'u açın > Sağ üstteki Profilinize tıklayın > <strong>Play Protect</strong> > Sağ üstteki Ayarlar (Çark) > <em>"Uygulamaları Play Protect ile tara"</em> seçeneğini kapatın.
                 </div>
             </div>
 
             <div class="info-box fade-in">
                 <h3>⚙️ Şeffaf Kontrol ve Sistemden Kaldırma</h3>
-                <p>Uygulamamız cihazınızda gizli arka plan hizmetleri çalıştırmaz. Verileriniz asla internete yüklenmez, sadece cihazınız ile ekran arasında aktarılır.</p>
+                <p>Uygulamamız cihazınızda gizli arka plan hizmetleri çalıştırmaz. Verileriniz asla internete yüklenmez, sadece cihazınız ile harici ekran arasında kalır.</p>
                 <p>Sistemi kullanmaya ara vermek isterseniz telefonunuzun <strong>Ayarlar > Bildirim Erişimi</strong> menüsünden uygulamanın iznini kapatmanız yeterlidir.</p>
                 <div class="warning-box">
-                    <strong>Sistemden Tamamen Silmek:</strong> Uygulamayı telefonunuzdan standart bir şekilde (üzerine basılı tutup "Kaldır" diyerek) tamamen silebilirsiniz. Telefonunuzda hiçbir kalıntı, önbellek dosyası veya gizli kayıt bırakmaz.
+                    <strong>Sistemden Tamamen Silmek:</strong> Uygulamayı telefonunuzdan standart bir şekilde (üzerine basılı tutup "Kaldır" diyerek) tamamen silebilirsiniz. Telefonunuzda hiçbir kalıntı veya gizli kayıt bırakmaz.
                 </div>
             </div>
 
