@@ -94,7 +94,7 @@
             transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
         }
 
-        /* Temsili Ürün Görseli / Ekranı */
+        /* Temsili Ürün Görseli */
         .product-demo {
             margin-top: 60px;
             width: 100%; max-width: 800px;
@@ -144,7 +144,6 @@
         .info-section {
             background-color: #FFFFFF;
             border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .info-grid {
@@ -164,6 +163,40 @@
             width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;
             border-radius: 50%; font-size: 12px; flex-shrink: 0; margin-top: 3px;
         }
+
+        /* --- GÜVENLİK VE PLAY PROTECT BÖLÜMÜ (YENİ) --- */
+        .security-section {
+            background-color: var(--bg-color);
+            padding: 80px 10%;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .security-card {
+            background: #FFFFFF;
+            max-width: 900px; margin: 0 auto;
+            border-radius: 20px; padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            display: flex; gap: 40px; align-items: flex-start;
+        }
+
+        .shield-icon {
+            width: 80px; height: 80px; flex-shrink: 0;
+            background-color: rgba(37, 99, 235, 0.05);
+            border-radius: 20px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 40px; color: var(--accent-color);
+        }
+
+        .security-content h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--primary-color); }
+        .security-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.7; }
+        
+        .install-steps {
+            background: var(--bg-color); padding: 20px 25px; border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            margin-top: 20px;
+        }
+        .install-steps strong { color: var(--primary-color); }
 
         /* --- FOOTER --- */
         footer {
@@ -192,6 +225,9 @@
         @media (max-width: 900px) {
             .info-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .security-card { flex-direction: column; padding: 30px; gap: 20px; text-align: center; }
+            .shield-icon { margin: 0 auto; }
+            .install-steps { text-align: left; }
             .footer-content { flex-direction: column; text-align: center; gap: 20px; }
             .hero h1 { font-size: 2.8rem; }
         }
@@ -207,7 +243,7 @@
                 <a href="#ozellikler">Özellikler</a>
                 <a href="#nasil-calisir">Nasıl Çalışır?</a>
             </div>
-            <a href="#indir" class="btn-header">Uygulamayı İndir</a>
+            <a href="#kurulum" class="btn-header">Uygulamayı İndir</a>
         </div>
     </header>
 
@@ -232,19 +268,17 @@
             <div class="feature-card fade-in">
                 <div class="feature-icon">🛡️</div>
                 <h3>Maksimum Güvenlik</h3>
-                <p>Seyir halindeyken telefonunuzu cebinizden çıkarmanıza gerek kalmaz. Navigasyon yönlendirmeleri ve arayan kişi bilgisi anında ekranınıza yansır, böylece gözünüzü yoldan ayırmazsınız.</p>
+                <p>Seyir halindeyken telefonunuzu cebinizden çıkarmanıza gerek kalmaz. Navigasyon yönlendirmeleri ve arayan kişi bilgisi anında ekranınıza yansır.</p>
             </div>
-
             <div class="feature-card fade-in">
                 <div class="feature-icon">🎯</div>
                 <h3>Akıllı Filtreleme</h3>
-                <p>Gereksiz bildirim sesleri ve kalabalık mesaj grupları sizi rahatsız etmez. Uygulamamız sadece sizin için önemli olan çağrıları ve gerçek mesajları seçerek ekranınıza gönderir.</p>
+                <p>Uygulamamız sadece sizin için önemli olan çağrıları ve gerçek mesajları seçerek ekranınıza gönderir, gereksiz bildirimleri engeller.</p>
             </div>
-
             <div class="feature-card fade-in">
                 <div class="feature-icon">🔋</div>
                 <h3>Pil Dostu Bağlantı</h3>
-                <p>Telefonunuzun ve cihazınızın şarjını hızla tüketmez. Özel olarak optimize edilmiş kablosuz iletişim teknolojisi sayesinde, gün boyu kesintisiz ve enerji tasarruflu bir kullanım sağlar.</p>
+                <p>Gün boyu kesintisiz ve enerji tasarruflu bir kullanım sağlar. Telefonunuzun şarjını hızla tüketmez.</p>
             </div>
         </div>
     </section>
@@ -253,21 +287,35 @@
         <div class="info-grid">
             <div class="info-text fade-in">
                 <h2>Telefonunuz Sizin Yerine Düşünür.</h2>
-                <p>Neural Link uygulaması, karmaşık ayarlarla uğraşmanızı gerektirmez. Telefonunuza kurduğunuz an arka planda sessizce çalışmaya başlar.</p>
-                <p>Yandex veya Google Haritalar'dan bir rota oluşturduğunuzda, sistem otomatik olarak devreye girer ve sürüş asistanınız aktif hale gelir.</p>
-                
+                <p>Neural Link uygulaması, karmaşık ayarlarla uğraşmanızı gerektirmez. Telefonunuza kurduğunuz an arka planda sessizce çalışmaya başlar ve Bluetooth ile cihazınıza otomatik bağlanır.</p>
                 <ul class="check-list">
                     <li>Yandex ve Google Haritalar ile tam uyum.</li>
                     <li>Sadece önemli olan WhatsApp mesajları ve çağrılar.</li>
                     <li>Güneş ışığında bile net okunan parlak gösterge ekranı.</li>
-                    <li>Kurulumu ve kullanımı son derece basit mobil arayüz.</li>
                 </ul>
             </div>
             <div class="fade-in" style="background: var(--bg-color); border-radius: 24px; padding: 40px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
                 <div style="width: 80px; height: 80px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 20px;">📱</div>
                 <h3 style="margin-bottom: 10px; color: var(--primary-color);">Mobil Uygulama Hazır</h3>
                 <p style="color: var(--text-muted); margin-bottom: 20px;">Uygulamayı telefonunuza indirin, cihazınızla eşleştirin ve güvenli sürüşün tadını çıkarın.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Detaylı Kurulum Rehberi →</a>
+                <a href="#kurulum" class="btn-main" style="padding: 12px 24px; font-size: 14px;">Hemen İndir</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kurulum" class="security-section">
+        <div class="security-card fade-in">
+            <div class="shield-icon">🔒</div>
+            <div class="security-content">
+                <h3>Güvenli Kurulum ve Play Protect Bilgilendirmesi</h3>
+                <p>Uygulamamızı telefonunuza kurarken <strong>"Google Play Protect"</strong> tarafından bir güvenlik uyarısı görebilirsiniz. Bu, Play Store dışından indirilen ve <i>"Bildirim Okuma"</i> yetkisi isteyen tüm uygulamalar için gösterilen standart ve otomatik bir uyarıdır.</p>
+                
+                <p>Neural Link, size gelen navigasyon bildirimlerini cihazınıza yansıtabilmek için bu izne ihtiyaç duyar. <strong>%100 Çevrimdışı</strong> çalışır; hiçbir kişisel veriniz internete aktarılmaz, sadece telefonunuz ile cihazınız arasında güvenli Bluetooth ağı üzerinden iletilir.</p>
+
+                <div class="install-steps">
+                    <p style="margin-bottom: 5px;"><strong>Kurulumu tamamlamak için:</strong></p>
+                    <p>Uyarı ekranında <strong>"Daha fazla ayrıntı"</strong> (veya Details) seçeneğine dokunun ve ardından <strong>"Yine de yükle"</strong> butonuna basarak kurulumu güvenle bitirin.</p>
+                </div>
             </div>
         </div>
     </section>
